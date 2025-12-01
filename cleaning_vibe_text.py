@@ -28,7 +28,8 @@ for song in analyse_json:
         print(f"Vibe text generated for {song['title']} by {song['artist']}")
 
     else:
-        song["vibe_text"] = f"Title: {song['title']}. Artist: {song['artist']}. Status: Instrumental or Lyrics not found"
+        song["vibe_text"] = None
+        print(f"Vibe text not generated for {song['title']} by {song['artist']}")
 
 with open("docs/candidates_with_vibe_text.json", "w") as f:
     json.dump(analyse_json, f, indent=4, ensure_ascii=False)

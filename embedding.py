@@ -1,7 +1,7 @@
 import os
 import json
 from dotenv import load_dotenv
-import faiss 
+from openai import OpenAI
 
 load_dotenv()
 
@@ -34,6 +34,6 @@ for song in analyse_json:
 with open("docs/candidates_with_embedding.json", "w") as f:
     json.dump(analyse_json, f, indent=4, ensure_ascii=False)
     print("All songs with embedding saved in candidates_with_embedding.json")
-    
+
 
     
