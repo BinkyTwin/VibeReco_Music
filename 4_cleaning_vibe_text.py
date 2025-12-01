@@ -8,13 +8,14 @@ for song in analyse_json:
     if song.get("analysis"):
         data = song["analysis"]
 
-        theme_str = ", ".join(data["semantic_layer"]["primary_theme"])
+        theme_str = "".join(data["semantic_layer"]["primary_theme"])
+        secondary_themes_str = ", ".join(data["semantic_layer"]["secondary_themes"])
         keywords_str = ", ".join(data["semantic_layer"]["keywords"])
         context_str = ", ".join(data["contextual_metadata"]["listening_context"])
         vibe_text = (
             f"Title: {song['title']}. Artist: {song['artist']}. "
             f"Primary Theme: {theme_str}. "
-            f"Secondary Themes: {data['semantic_layer']['secondary_themes']}. "
+            f"Secondary Themes: {secondary_themes_str}. "
             f"Emotions: Valence {data['emotional_profile']['valence']}, "
             f"Arousal {data['emotional_profile']['arousal']}, "
             f"Dominance {data['emotional_profile']['dominance']}. "

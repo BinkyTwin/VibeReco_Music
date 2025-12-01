@@ -25,10 +25,8 @@ for song in analyse_json:
             )
             song["embedding"] = completion.data[0].embedding
         except Exception as e:
-            song["embedding"] = None
             print(f"Error for {song['title']} by {song['artist']}: {str(e)}")
     else:
-        song["embedding"] = None
         print(f"Song without vibe text : {song['title']} - {song['artist']}")
 
 with open("docs/candidates_with_embedding.json", "w") as f:

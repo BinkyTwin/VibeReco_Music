@@ -22,7 +22,7 @@ if len(search_result) > 0:
     track_title = first_track['title']
     track_artist = first_track['artists'][0]['name']
 
-radio = ytmusic.get_watch_playlist(track_id, limit=15)
+radio = ytmusic.get_watch_playlist(track_id, limit=10)
 
 for track in radio["tracks"]:
     chanson_propre = {

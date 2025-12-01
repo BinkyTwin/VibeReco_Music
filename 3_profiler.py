@@ -29,6 +29,7 @@ def analyze_lyrics(artist, title, lyrics):
                         "song_meta": {
                             "title": "Titre",
                             "artist": "Artiste"
+                            "language": "Langue"
                         },
                         "emotional_profile": {
                             "valence": "Float entre -1 (Négatif) et 1 (Positif)",
