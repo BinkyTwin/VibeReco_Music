@@ -14,7 +14,7 @@ token_genius = os.getenv('TOKEN_GENIUS')
 
 ytmusic = ytmusicapi.YTMusic()
 
-search_result = ytmusic.search("Tettru", "songs")
+search_result = ytmusic.search("Be My Baby", "songs")
 
 if len(search_result) > 0:
     first_track = search_result[0]
