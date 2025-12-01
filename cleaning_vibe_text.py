@@ -1,11 +1,5 @@
 import os
-from openai import OpenAI
 import json
-from dotenv import load_dotenv
-
-load_dotenv()
-
-openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
 
 with open("docs/candidates_analyzed.json", "r") as f:
     analyse_json = json.load(f)
