@@ -104,7 +104,7 @@ def fetch_lyrics(tracks):
                 try: 
                     print(f"Fallback to Genius for: {candidate['title']}")
                     # Clean title to remove noise like "(Official Audio)"
-                    clean_title = re.sub(r"[\(\[].*?(official|video|audio|lyrics|remaster).*?[\)\]]", "", candidate["title"], flags=re.IGNORECASE).strip()
+                    clean_title = re.sub(r"[\(\[].*?(official|video|audio|lyrics|version|remaster|remaster version).*?[\)\]]", "", candidate["title"], flags=re.IGNORECASE).strip()
                     
                     song = genius.search_song(clean_title, candidate["artist"])
                     if song:
