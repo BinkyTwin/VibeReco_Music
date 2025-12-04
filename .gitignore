@@ -22,3 +22,6 @@ archive
 *.json
 *.ipynb
 *.faiss
+
+# Fichiers système
+.ds_store

@@ -32,7 +32,13 @@ def get_youtube_recommendations(seed_query, limit=10):
             return None
         else:
             first_track = search_results[0]
-            track_id = first_track['videoId']
+            track_id = first_track.get('videoId')
+            
+            # Vérifier que le videoId existe et n'est pas None
+            if not track_id:
+                print(f"Aucun videoId trouvé pour: {seed_query}")
+                return None
+            
             radio = yt.get_watch_playlist(track_id, limit=10)
 
             for track in radio["tracks"][:limit]:

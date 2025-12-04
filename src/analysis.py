@@ -1,7 +1,8 @@
 from openai import OpenAI
+import json
 from src.config import OPENROUTER_API_KEY
 
-def analyze_emotional_profile(lyrics_text):
+def analyze_emotional_profile(title, artist, lyrics):
     """
     Analyzes song lyrics to extract a structured emotional and semantic profile using AI.
     
@@ -10,7 +11,9 @@ def analyze_emotional_profile(lyrics_text):
     and contextual metadata for music recommendation purposes.
     
     Args:
-        lyrics_text: String containing the song lyrics to analyze
+        title: String containing the song title
+        artist: String containing the artist name
+        lyrics: String containing the song lyrics to analyze
         
     Returns:
         dict: A structured JSON object containing:
