@@ -2,6 +2,7 @@ import ytmusicapi
 from lyricsgenius import Genius
 from src.config import TOKEN_GENIUS
 import time
+import re
 
 def get_youtube_recommendations(seed_query, limit=10):
     """
@@ -77,18 +78,48 @@ def fetch_lyrics(tracks):
         print("Artist found, please search a song")
         return None
     else:
+        yt = ytmusicapi.YTMusic()
         genius = Genius(TOKEN_GENIUS, verbose=False, remove_section_headers=True)
+        
         for candidate in tracks:
-            try: 
-                song = genius.search_song(candidate["title"], candidate["artist"])
-                if song:
-                    candidate["lyrics"] = song.lyrics
-                    candidate["status"] = "found"
-                    print(f"Lyrics saved for {candidate['title']} by {candidate['artist']}")
+            lyrics_found = False
+            
+            # 1. Try YTMusic (Fast)
+            try:
+                print(f"Attempting YTMusic for: {candidate['title']}")
+                watch_data = yt.get_watch_playlist(candidate["videoId"])
+                if "lyrics" in watch_data and watch_data["lyrics"]:
+                    lyrics_data = yt.get_lyrics(watch_data["lyrics"])
+                    if lyrics_data and "lyrics" in lyrics_data:
+                        candidate["lyrics"] = lyrics_data["lyrics"]
+                        candidate["status"] = "found"
+                        candidate["source"] = "ytmusic"
+                        print(f"  -> Found lyrics via YTMusic")
+                        lyrics_found = True
             except Exception as e:
-                candidate["lyrics"] = None
-                candidate["status"] = "not found"
-                print(f"Lyrics not found for {candidate['title']} by {candidate['artist']} : {str(e)}   ")
+                print(f"  -> YTMusic error: {e}")
+
+            # 2. Fallback to Genius (Reliable)
+            if not lyrics_found:
+                try: 
+                    print(f"Fallback to Genius for: {candidate['title']}")
+                    # Clean title to remove noise like "(Official Audio)"
+                    clean_title = re.sub(r"[\(\[].*?(official|video|audio|lyrics|remaster).*?[\)\]]", "", candidate["title"], flags=re.IGNORECASE).strip()
+                    
+                    song = genius.search_song(clean_title, candidate["artist"])
+                    if song:
+                        candidate["lyrics"] = song.lyrics
+                        candidate["status"] = "found"
+                        candidate["source"] = "genius"
+                        print(f"  -> Found lyrics via Genius (searched as '{clean_title}')")
+                    else:
+                        candidate["lyrics"] = None
+                        candidate["status"] = "not found"
+                        print(f"  -> Lyrics not found on Genius")
+                except Exception as e:
+                    candidate["lyrics"] = None
+                    candidate["status"] = "not found"
+                    print(f"  -> Genius error: {str(e)}")
         
         time.sleep(1)
     
