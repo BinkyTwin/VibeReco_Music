@@ -1,0 +1,10 @@
+streamlit
+openai
+ytmusicapi
+lyricsgenius
+faiss-cpu
+python-dotenv
+numpy
+pandas
+seaborn
+matplotlib

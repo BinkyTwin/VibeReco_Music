@@ -9,7 +9,7 @@ st.set_page_config(
     page_title="Deep Vibe Recommender",
     page_icon="🎵",
     layout="wide"
-)
+)       
 
 # --- CHARGEMENT DES DONNÉES (CACHÉ) ---
 
