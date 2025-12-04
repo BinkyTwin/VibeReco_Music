@@ -79,11 +79,11 @@ class MusicPipeline:
         """
         
         # Step 1: Get YouTube Music recommendations
-        self.log("🔍 Recherche de chansons sur YouTube Music...")
+        self.log("Searching for songs on YouTube Music... - Recherche de chansons sur YouTube Music...")
         tracks = get_youtube_recommendations(query, limit=limit)
         
         if not tracks:
-            self.log("❌ Aucune chanson trouvée sur YouTube Music.")
+            self.log("No songs found on YouTube Music. - Aucune chanson trouvée sur YouTube Music.")
             if return_youtube_tracks:
                 return {"youtube_tracks": None, "final_tracks": None, "distances": None, "indices": None}
             return None, None, None
@@ -91,24 +91,24 @@ class MusicPipeline:
         # Store YouTube tracks for intermediate display
         youtube_tracks = tracks.copy()
         
-        self.log(f"✅ {len(tracks)} chansons trouvées sur YouTube Music")
+        self.log(f"{len(tracks)} songs found on YouTube Music - {len(tracks)} chansons trouvées sur YouTube Music")
         
         # Step 2: Fetch lyrics from Genius
-        self.log("📝 Récupération des paroles via Genius API...")
+        self.log("Fetching lyrics via Genius API... - Récupération des paroles via Genius API...")
         tracks = fetch_lyrics(tracks)
         
         if not tracks:
-            self.log("❌ Échec de la récupération des paroles.")
+            self.log("Failed to fetch lyrics. - Échec de la récupération des paroles.")
             return None, None, None
         
         # Store tracks with lyrics status for display
         tracks_with_lyrics = tracks.copy()
         
         lyrics_found = sum(1 for t in tracks if t.get("status") == "found")
-        self.log(f"✅ Paroles trouvées pour {lyrics_found}/{len(tracks)} chansons")
+        self.log(f"Lyrics found for {lyrics_found}/{len(tracks)} songs - Paroles trouvées pour {lyrics_found}/{len(tracks)} chansons")
         
-        # Step 3: Analyze emotional profiles using AI
-        self.log("🧠 Analyse émotionnelle et sémantique via LLM...")
+        # Step 3: Analyze emotional profiles using LLM
+        self.log("Emotional and semantic analysis via LLM... - Analyse émotionnelle et sémantique via LLM...")
         for track in tracks:
             if track.get("lyrics") and track.get("status") == "found":
                 try:
@@ -118,62 +118,62 @@ class MusicPipeline:
                         lyrics=track["lyrics"]
                     )
                     track["analysis"] = analysis
-                    self.log(f"  ✓ Analyse complétée pour '{track['title']}'")
+                    self.log(f"  Analysis completed for '{track['title']}' - Analyse complétée pour '{track['title']}'")
                 except Exception as e:
-                    self.log(f"  ⚠️ Erreur d'analyse pour '{track['title']}': {str(e)}")
+                    self.log(f"  Analysis error for '{track['title']}': {str(e)} - Erreur d'analyse pour '{track['title']}': {str(e)}")
                     track["analysis"] = None
             else:
                 track["analysis"] = None
-                self.log(f"  ⊘ Pas de paroles pour '{track['title']}' - analyse ignorée")
+                self.log(f"  No lyrics for '{track['title']}' - analysis skipped - Pas de paroles pour '{track['title']}' - analyse ignorée")
         
         analyzed_count = sum(1 for t in tracks if t.get("analysis"))
-        self.log(f"✅ {analyzed_count}/{len(tracks)} chansons analysées")
+        self.log(f"{analyzed_count}/{len(tracks)} songs analyzed - {analyzed_count}/{len(tracks)} chansons analysées")
         
         # Step 4: Generate vibe text descriptions
-        self.log("✨ Génération des descriptions de vibe...")
+        self.log("Generating vibe descriptions... - Génération des descriptions de vibe...")
         try:
             generate_vibe_text(tracks)
             vibe_count = sum(1 for t in tracks if t.get("vibe_text"))
-            self.log(f"✅ {vibe_count} descriptions de vibe générées")
+            self.log(f"{vibe_count} vibe descriptions generated - {vibe_count} descriptions de vibe générées")
         except Exception as e:
-            self.log(f"⚠️ Erreur lors de la génération des vibes: {str(e)}")
+            self.log(f"Error generating vibes: {str(e)} - Erreur lors de la génération des vibes: {str(e)}")
         
         # Step 5: Generate embeddings
-        self.log("🔢 Génération des embeddings via OpenAI...")
+        self.log("Generating embeddings via OpenAI... - Génération des embeddings via OpenAI...")
         try:
             tracks = generate_embedding(tracks)
             embedding_count = sum(1 for t in tracks if t.get("embedding"))
-            self.log(f"✅ {embedding_count} embeddings générés")
+            self.log(f"{embedding_count} embeddings generated - {embedding_count} embeddings générés")
         except Exception as e:
-            self.log(f"❌ Erreur lors de la génération des embeddings: {str(e)}")
+            self.log(f"Error generating embeddings: {str(e)} - Erreur lors de la génération des embeddings: {str(e)}")
             return None, None, None
         
         # Filter tracks with valid embeddings
         valid_tracks = [t for t in tracks if t.get("embedding")]
         
         if len(valid_tracks) < 2:
-            self.log("❌ Pas assez de chansons avec embeddings pour construire l'index.")
+            self.log("Not enough songs with embeddings to build index. - Pas assez de chansons avec embeddings pour construire l'index.")
             return None, None, None
         
         # Step 6: Build FAISS index
-        self.log("🏗️ Construction de l'index FAISS...")
+        self.log("Building FAISS index... - Construction de l'index FAISS...")
         try:
             embeddings = np.array([t["embedding"] for t in valid_tracks]).astype("float32")
             index = build_faiss_index(embeddings)
-            self.log(f"✅ Index FAISS construit avec {len(valid_tracks)} vecteurs")
+            self.log(f"FAISS index built with {len(valid_tracks)} vectors - Index FAISS construit avec {len(valid_tracks)} vecteurs")
         except Exception as e:
-            self.log(f"❌ Erreur lors de la construction de l'index: {str(e)}")
+            self.log(f"Error building index: {str(e)} - Erreur lors de la construction de l'index: {str(e)}")
             return None, None, None
         
         # Step 7: Search for similar songs
         # Use the first song (seed) as the query
-        self.log("🎯 Recherche de chansons similaires...")
+        self.log("Searching for similar songs... - Recherche de chansons similaires...")
         try:
             seed_vector = np.array([valid_tracks[0]["embedding"]]).astype("float32")
             distances, indices = search_similar_songs(index, seed_vector[0], k=min(5, len(valid_tracks)-1))
             
-            self.log(f"✅ {len(indices[0])} chansons similaires trouvées")
-            self.log("🎉 Pipeline terminé avec succès!")
+            self.log(f"{len(indices[0])} similar songs found - {len(indices[0])} chansons similaires trouvées")
+            self.log("Pipeline completed successfully! - Pipeline terminé avec succès!")
             
             if return_youtube_tracks:
                 return {
@@ -186,7 +186,7 @@ class MusicPipeline:
             return valid_tracks, distances, indices
             
         except Exception as e:
-            self.log(f"❌ Erreur lors de la recherche de similarité: {str(e)}")
+            self.log(f"Error during similarity search: {str(e)} - Erreur lors de la recherche de similarité: {str(e)}")
             if return_youtube_tracks:
                 return {"youtube_tracks": youtube_tracks, "final_tracks": None, "distances": None, "indices": None}
             return None, None, None
