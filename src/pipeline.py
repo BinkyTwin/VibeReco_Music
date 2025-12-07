@@ -93,6 +93,10 @@ class MusicPipeline:
         
         self.log(f"{len(tracks)} songs found on YouTube Music - {len(tracks)} chansons trouvées sur YouTube Music")
         
+        # Add YouTube rank (original order from YouTube Music)
+        for i, track in enumerate(tracks):
+            track['youtube_rank'] = i + 1
+        
         # Step 2: Fetch lyrics from Genius
         self.log("Fetching lyrics via Genius API... - Récupération des paroles via Genius API...")
         tracks = fetch_lyrics(tracks)
@@ -170,7 +174,7 @@ class MusicPipeline:
         self.log("Searching for similar songs... - Recherche de chansons similaires...")
         try:
             seed_vector = np.array([valid_tracks[0]["embedding"]]).astype("float32")
-            distances, indices = search_similar_songs(index, seed_vector[0], k=min(5, len(valid_tracks)-1))
+            distances, indices = search_similar_songs(index, seed_vector[0], k=len(valid_tracks)-1)
             
             self.log(f"{len(indices[0])} similar songs found - {len(indices[0])} chansons similaires trouvées")
             self.log("Pipeline completed successfully! - Pipeline terminé avec succès!")

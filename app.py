@@ -18,6 +18,7 @@ st.markdown("""
 <style>
     .metric-card {
         background-color: #f0f2f6;
+        color: #31333F;
         border-radius: 10px;
         padding: 15px;
         margin: 10px 0;
@@ -99,7 +100,11 @@ def main():
     # ONGLET 1 : PIPELINE LIVE (Temps réel)
     # ==========================================
     with tab_live:
-        st.info("**How it works? - Comment ça marche ?** Enter a title. The system will search for the song, scan its lyrics, analyze its hidden meaning with an LLM, and build a custom recommendation engine in real time. - Entrez un titre. Le système va chercher la chanson, scanner ses paroles, analyser son sens caché avec un LLM, et construire un moteur de recommandation sur mesure en temps réel.")
+        st.info("""**How it works? - Comment ça marche ?**
+
+Enter a title. The system will search for the song, scan its lyrics, analyze its hidden meaning with an LLM, and build a custom recommendation engine in real time.
+
+Entrez un titre. Le système va chercher la chanson, scanner ses paroles, analyser son sens caché avec un LLM, et construire un moteur de recommandation sur mesure en temps réel.""")
         
         with st.form("live_search"):
             col_search, col_limit = st.columns([4, 1])
@@ -227,6 +232,9 @@ def render_song_card(song, score, rank):
     with st.container():
         st.markdown(f"#### #{rank} {song['title']}")
         st.caption(f"**{song['artist']}**")
+        
+        if 'youtube_rank' in song:
+            st.caption(f"Original YouTube Rank: #{song['youtube_rank']}")
         
         # Jauge de compatibilité colorée
         match_percentage = int(score * 100)

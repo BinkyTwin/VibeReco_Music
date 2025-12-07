@@ -120,8 +120,10 @@ def fetch_lyrics(tracks):
                     candidate["lyrics"] = None
                     candidate["status"] = "not found"
                     print(f"  -> Genius error: {str(e)}")
+                
+                time.sleep(1)
         
-        time.sleep(1)
+
     
         return tracks
 
