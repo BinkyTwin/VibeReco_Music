@@ -609,12 +609,8 @@ function setupEventListeners() {
     // Result
     elements.newTestBtn.addEventListener('click', resetTest);
 
-    // Audio
-    elements.audioPlayPause.addEventListener('click', () => {
-        state.isPlaying = !state.isPlaying;
-        elements.playIcon.style.display = state.isPlaying ? 'none' : 'block';
-        elements.pauseIcon.style.display = state.isPlaying ? 'block' : 'none';
-    });
+    // Audio - use togglePlayPause to actually control YouTube player
+    elements.audioPlayPause.addEventListener('click', togglePlayPause);
 }
 
 // ============================================
