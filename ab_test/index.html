@@ -113,19 +113,33 @@
       </div>
 
       <div class="rating-section">
+        <div class="pedagogical-note mb-6">
+          <p><strong>Note la playlist uniquement sur son ambiance et son enchaînement, pas sur les morceaux
+              individuellement.</strong></p>
+        </div>
+
         <div class="rating-grid">
           <div class="rating-item">
-            <div class="rating-label">Cohérence émotionnelle</div>
+            <div class="rating-label-group">
+              <div class="rating-title">1. Cohérence de la vibe</div>
+              <div class="rating-desc">Est-ce que l’ambiance reste cohérente du début à la fin ?</div>
+            </div>
             <input type="range" class="rating-slider" id="rating-emotional" min="1" max="5" value="3">
             <div class="rating-value" id="rating-emotional-value">3</div>
           </div>
           <div class="rating-item">
-            <div class="rating-label">Cohérence narrative / thématique</div>
+            <div class="rating-label-group">
+              <div class="rating-title">2. Fluidité de la playlist</div>
+              <div class="rating-desc">Est-ce que les morceaux s’enchaînent naturellement ?</div>
+            </div>
             <input type="range" class="rating-slider" id="rating-narrative" min="1" max="5" value="3">
             <div class="rating-value" id="rating-narrative-value">3</div>
           </div>
           <div class="rating-item">
-            <div class="rating-label">Envie de garder la playlist</div>
+            <div class="rating-label-group">
+              <div class="rating-title">3. Envie de la garder</div>
+              <div class="rating-desc">Est-ce que tu écouterais cette playlist dans la vraie vie ?</div>
+            </div>
             <input type="range" class="rating-slider" id="rating-keepability" min="1" max="5" value="3">
             <div class="rating-value" id="rating-keepability-value">3</div>
           </div>

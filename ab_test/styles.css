@@ -519,7 +519,37 @@ p {
     text-align: center;
 }
 
+.pedagogical-note {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    text-align: center;
+    color: var(--primary-200);
+    font-size: 0.95rem;
+}
+
+.rating-label-group {
+    margin-bottom: 16px;
+    text-align: left;
+    /* Align text to left for better readability of descriptions */
+}
+
+.rating-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.rating-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
 .rating-label {
+    /* Legacy class kept just in case, though replaced by rating-label-group structure */
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin-bottom: 12px;
