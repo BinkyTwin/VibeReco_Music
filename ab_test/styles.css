@@ -752,9 +752,11 @@ p {
     height: 4px;
     background: var(--bg-card);
     border-radius: 2px;
-    overflow: hidden;
+    /* overflow: hidden; Removed to allow bubble to show */
     flex-shrink: 0;
     cursor: pointer;
+    position: relative;
+    /* Anchor for anything absolute inside if needed, though fill is usually flow or static, but let's be safe */
 }
 
 .audio-progress-fill {
@@ -762,6 +764,25 @@ p {
     background: var(--gradient-primary);
     width: 0%;
     transition: width 0.1s linear;
+    position: relative;
+    /* Anchor for the bubble */
+    border-radius: 2px;
+}
+
+/* The Bubble / Thumb */
+.audio-progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    /* Center the 12px bubble on the edge */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
 
 /* === Utilities === */
