@@ -5,17 +5,23 @@ This script runs the MusicPipeline for each seed and saves both:
 - VibeReco reranked order
 
 Output: data/ab_test_playlists.json
+
+FEATURES:
+- Incremental saves after each seed (no data loss on crash)
+- Resume from existing data
+- Converts numpy types to native Python for JSON
 """
 
 import json
 import os
 import sys
+from datetime import datetime
 
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.pipeline import MusicPipeline
-import random
+import numpy as np
 
 # Official benchmark seedset
 SEED_SONGS = [
@@ -36,6 +42,20 @@ SEED_SONGS = [
     {"id": 15, "title": "Iris", "artist": "The Goo Goo Dolls", "query": "Iris The Goo Goo Dolls", "vibe": "emotionnel"},
 ]
 
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "data")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "ab_test_playlists.json")
+
+
+def to_native_type(value):
+    """Convert numpy types to native Python types for JSON serialization."""
+    if isinstance(value, (np.floating, np.float32, np.float64)):
+        return float(value)
+    elif isinstance(value, (np.integer, np.int32, np.int64)):
+        return int(value)
+    elif isinstance(value, np.ndarray):
+        return value.tolist()
+    return value
+
 
 def format_track(track, index):
     """Format track for frontend display."""
@@ -44,8 +64,29 @@ def format_track(track, index):
         "title": track.get("title", "Unknown"),
         "artist": track.get("artist", "Unknown"),
         "videoId": track.get("videoId", ""),
-        "vibeScore": track.get("vibe_score", 0),
+        "vibeScore": 0,  # Will be set later with proper conversion
     }
+
+
+def load_existing_data():
+    """Load existing data to resume from previous run."""
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                print(f"📂 Loaded existing data with {len(data.get('playlists', {}))} seeds")
+                return data
+        except Exception as e:
+            print(f"⚠️ Could not load existing data: {e}")
+    return None
+
+
+def save_data(data):
+    """Save data to JSON file (incremental save)."""
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"💾 Saved to {OUTPUT_FILE}")
 
 
 def generate_playlist_pair(seed, limit=15):
@@ -89,7 +130,9 @@ def generate_playlist_pair(seed, limit=15):
                     track = vibe_tracks[idx]
                     distance = distances[0][i] if distances is not None else 0
                     formatted = format_track(track, i)
-                    formatted["vibeScore"] = round(1 - distance, 3) if distance < 1 else 0
+                    # Convert numpy float32 to native Python float
+                    vibe_score = 1 - distance if distance < 1 else 0
+                    formatted["vibeScore"] = round(float(vibe_score), 3)
                     vibereco_playlist.append(formatted)
         else:
             vibereco_playlist = youtube_playlist
@@ -101,6 +144,8 @@ def generate_playlist_pair(seed, limit=15):
         
     except Exception as e:
         print(f"❌ Error processing {seed['title']}: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return None
 
 
@@ -108,40 +153,53 @@ def main():
     """Generate all playlist pairs and save to JSON."""
     print("\n" + "="*70)
     print(" VibeReco A/B Test - Playlist Pre-Generation")
+    print(" (with incremental saves - crash-resistant)")
     print("="*70)
     
-    output_dir = os.path.join(os.path.dirname(__file__), "data")
-    os.makedirs(output_dir, exist_ok=True)
+    # Try to load existing data to resume
+    existing_data = load_existing_data()
     
-    all_playlists = {
-        "generated_at": "",
-        "seeds": SEED_SONGS,
-        "playlists": {}
-    }
-    
-    from datetime import datetime
-    all_playlists["generated_at"] = datetime.now().isoformat()
+    if existing_data:
+        all_playlists = existing_data
+        print(f"🔄 Resuming from existing data...")
+    else:
+        all_playlists = {
+            "generated_at": datetime.now().isoformat(),
+            "seeds": SEED_SONGS,
+            "playlists": {}
+        }
     
     success_count = 0
+    skipped_count = 0
     
     for seed in SEED_SONGS:
+        seed_id = str(seed["id"])
+        
+        # Skip if already processed successfully
+        if seed_id in all_playlists["playlists"] and all_playlists["playlists"][seed_id] is not None:
+            print(f"\n⏭️  Skipping {seed['title']} (already processed)")
+            skipped_count += 1
+            success_count += 1
+            continue
+        
         result = generate_playlist_pair(seed)
         
         if result:
-            all_playlists["playlists"][str(seed["id"])] = result
+            all_playlists["playlists"][seed_id] = result
             success_count += 1
             print(f"✅ {seed['title']}: {len(result['youtube'])} tracks (YT) / {len(result['vibereco'])} tracks (VR)")
         else:
-            all_playlists["playlists"][str(seed["id"])] = None
-    
-    # Save to JSON
-    output_file = os.path.join(output_dir, "ab_test_playlists.json")
-    with open(output_file, "w", encoding="utf-8") as f:
-        json.dump(all_playlists, f, ensure_ascii=False, indent=2)
+            all_playlists["playlists"][seed_id] = None
+        
+        # INCREMENTAL SAVE after each seed
+        all_playlists["last_updated"] = datetime.now().isoformat()
+        save_data(all_playlists)
     
     print(f"\n{'='*70}")
     print(f"✅ Generation complete: {success_count}/{len(SEED_SONGS)} seeds processed")
-    print(f"📁 Output saved to: {output_file}")
+    if skipped_count > 0:
+        print(f"⏭️  {skipped_count} seeds were already processed (skipped)")
+    print(f"📁 Output saved to: {OUTPUT_FILE}")
     print(f"{'='*70}\n")
     
     return all_playlists
