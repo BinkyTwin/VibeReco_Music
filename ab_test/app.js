@@ -91,6 +91,7 @@ const elements = {
     pauseIcon: document.getElementById('pause-icon'),
     nowPlayingTitle: document.getElementById('now-playing-title'),
     nowPlayingArtist: document.getElementById('now-playing-artist'),
+    audioProgress: document.querySelector('.audio-progress'),
     audioProgressFill: document.getElementById('audio-progress-fill'),
     audioPrev: document.getElementById('audio-prev'),
     audioNext: document.getElementById('audio-next')
@@ -604,6 +605,23 @@ function updateProgress() {
     }
 }
 
+function seekTo(event) {
+    if (!ytPlayer || !state.currentVideoId) return;
+
+    const rect = elements.audioProgress.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const width = rect.width;
+    const percentage = Math.max(0, Math.min(1, x / width));
+
+    const duration = ytPlayer.getDuration() || 0;
+    const newTime = duration * percentage;
+
+    if (newTime >= 0 && duration > 0) {
+        ytPlayer.seekTo(newTime, true);
+        updateProgress(); // Immediate visual update
+    }
+}
+
 function togglePlayPause() {
     if (ytPlayer) {
         if (state.isPlaying) {
@@ -689,6 +707,7 @@ function setupEventListeners() {
 
     // Audio - use togglePlayPause to actually control YouTube player
     elements.audioPlayPause.addEventListener('click', togglePlayPause);
+    elements.audioProgress.addEventListener('click', seekTo);
     if (elements.audioPrev) elements.audioPrev.addEventListener('click', playPrev);
     if (elements.audioNext) elements.audioNext.addEventListener('click', playNext);
 }
