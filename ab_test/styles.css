@@ -801,6 +801,97 @@ p {
     border-radius: 4px;
 }
 
+/* === Mobile Responsiveness Improvements === */
+@media (max-width: 768px) {
+
+    /* Scale down global sizing to fix "zoomed in" feel */
+    html {
+        font-size: 14px;
+    }
+
+    /* Adjust headings */
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    /* Improve Layout spacing */
+    .app-header {
+        padding: 16px 0;
+        margin-bottom: 24px;
+    }
+
+    .step-indicator {
+        margin-bottom: 24px;
+        gap: 12px;
+    }
+
+    .rating-section {
+        padding: 20px;
+    }
+
+    /* Redesign Audio Player for Mobile */
+    .audio-player {
+        flex-direction: column;
+        padding: 12px 16px;
+        gap: 12px;
+        /* Ensure it sits above content */
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Reorder player elements: Progress at top, Text center, Controls bottom */
+    .audio-progress {
+        width: 100%;
+        order: 1;
+        margin-bottom: 4px;
+    }
+
+    .now-playing {
+        width: 100%;
+        text-align: center;
+        order: 2;
+        margin-bottom: 4px;
+    }
+
+    .audio-controls {
+        width: 100%;
+        justify-content: center;
+        order: 3;
+        gap: 32px;
+        /* Bigger touch targets */
+    }
+
+    .control-btn {
+        padding: 12px;
+        /* Larger touch area */
+    }
+
+    /* Ensure body has enough padding so player doesn't cover content */
+    body {
+        /* Estimate player height: ~140px. Add safe buffer */
+        padding-bottom: 180px;
+    }
+
+    /* optimize playlist presentation */
+    .track-item {
+        padding: 6px;
+    }
+
+    .playlist-tracks {
+        max-height: 400px;
+        /* shorter scroll area on phone */
+    }
+}
+
+
+
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
 }
