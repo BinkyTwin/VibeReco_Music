@@ -1,0 +1,3047 @@
+{
+  "generated_at": "2025-12-10T20:14:11.586872",
+  "seeds": [
+    {
+      "id": 1,
+      "title": "Melodrama",
+      "artist": "Disiz, Theodora",
+      "query": "Melodrama Disiz Theodora",
+      "vibe": "introspection"
+    },
+    {
+      "id": 2,
+      "title": "DIPLOMATICO",
+      "artist": "ELGRANDETOTO",
+      "query": "DIPLOMATICO ELGRANDETOTO",
+      "vibe": "ego"
+    },
+    {
+      "id": 3,
+      "title": "LOVE YOU",
+      "artist": "Nono La Grinta",
+      "query": "LOVE YOU Nono La Grinta",
+      "vibe": "amour"
+    },
+    {
+      "id": 4,
+      "title": "Génération Impolie",
+      "artist": "Franglish, KeBlack",
+      "query": "Génération Impolie Franglish KeBlack",
+      "vibe": "fête"
+    },
+    {
+      "id": 5,
+      "title": "PARISIENNE",
+      "artist": "GIMS, La Mano 1.9",
+      "query": "PARISIENNE GIMS La Mano 1.9",
+      "vibe": "night_drive"
+    },
+    {
+      "id": 6,
+      "title": "The Fate of Ophelia",
+      "artist": "Taylor Swift",
+      "query": "The Fate of Ophelia Taylor Swift",
+      "vibe": "storytelling"
+    },
+    {
+      "id": 7,
+      "title": "ZOU BISOU",
+      "artist": "Theodora, Jul",
+      "query": "ZOU BISOU Theodora Jul",
+      "vibe": "amour"
+    },
+    {
+      "id": 8,
+      "title": "BIRDS OF A FEATHER",
+      "artist": "Billie Eilish",
+      "query": "BIRDS OF A FEATHER Billie Eilish",
+      "vibe": "introspection"
+    },
+    {
+      "id": 9,
+      "title": "Biff pas d'love",
+      "artist": "Bouss",
+      "query": "Biff pas d'love Bouss",
+      "vibe": "rupture"
+    },
+    {
+      "id": 10,
+      "title": "RUINART",
+      "artist": "R2",
+      "query": "RUINART R2",
+      "vibe": "ego"
+    },
+    {
+      "id": 11,
+      "title": "FASHION DESIGNA",
+      "artist": "Theodora",
+      "query": "FASHION DESIGNA Theodora",
+      "vibe": "ego"
+    },
+    {
+      "id": 12,
+      "title": "CARTIER SANTOS",
+      "artist": "SDM",
+      "query": "CARTIER SANTOS SDM",
+      "vibe": "ego"
+    },
+    {
+      "id": 13,
+      "title": "Disfruto",
+      "artist": "Carla Morrison",
+      "query": "Disfruto Carla Morrison",
+      "vibe": "nostalgie"
+    },
+    {
+      "id": 14,
+      "title": "Nostalgique",
+      "artist": "Jul",
+      "query": "Nostalgique Jul",
+      "vibe": "nostalgie"
+    },
+    {
+      "id": 15,
+      "title": "Iris",
+      "artist": "The Goo Goo Dolls",
+      "query": "Iris The Goo Goo Dolls",
+      "vibe": "emotionnel"
+    }
+  ],
+  "playlists": {
+    "1": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "melodrama",
+          "artist": "disiz",
+          "videoId": "ll5uAeEanjY",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "ton ventre",
+          "artist": "disiz",
+          "videoId": "U_Eez4j4M04",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Blues d’hiver",
+          "artist": "Theodora",
+          "videoId": "lxEhaxWVEhs",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Hit Sale (feat. Roméo Elvis)",
+          "artist": "Therapie Taxi",
+          "videoId": "CpTLFchI8Zk",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Nightcall (feat. Angèle & Phoenix)",
+          "artist": "Kavinsky",
+          "videoId": "CzT3UFjL8G4",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Le Graal (Clip officiel)",
+          "artist": "Kyo",
+          "videoId": "hWXYnW2Um68",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Ordinary",
+          "artist": "Alex Warren",
+          "videoId": "u2ah9tWTkmk",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Beautiful Things",
+          "artist": "Benson Boone",
+          "videoId": "Oa_RSwwpPaA",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Show Me Love",
+          "artist": "WizTheMc",
+          "videoId": "Z3aduh5fxCo",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Sweater Weather (Official Video)",
+          "artist": "The Neighbourhood",
+          "videoId": "GCdwKhTtNNw",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Amsterdam",
+          "artist": "disiz",
+          "videoId": "geN5eXOIV7c",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Maledetta Rabbia",
+          "artist": "BLANCO",
+          "videoId": "FFn1jiclP_A",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "BIRDS OF A FEATHER",
+          "artist": "Billie Eilish",
+          "videoId": "V9PVRfjEBTI",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Love Me Not",
+          "artist": "Ravyn Lenae",
+          "videoId": "cswfR85D7jM",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "casting sentimental",
+          "artist": "disiz",
+          "videoId": "jHUfEES6Gkc",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "melodrama",
+          "artist": "disiz",
+          "videoId": "ll5uAeEanjY",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "casting sentimental",
+          "artist": "disiz",
+          "videoId": "jHUfEES6Gkc",
+          "vibeScore": 0.184
+        },
+        {
+          "position": 3,
+          "title": "ton ventre",
+          "artist": "disiz",
+          "videoId": "U_Eez4j4M04",
+          "vibeScore": 0.222
+        },
+        {
+          "position": 4,
+          "title": "Blues d’hiver",
+          "artist": "Theodora",
+          "videoId": "lxEhaxWVEhs",
+          "vibeScore": 0.268
+        },
+        {
+          "position": 5,
+          "title": "Amsterdam",
+          "artist": "disiz",
+          "videoId": "geN5eXOIV7c",
+          "vibeScore": 0.339
+        },
+        {
+          "position": 6,
+          "title": "Maledetta Rabbia",
+          "artist": "BLANCO",
+          "videoId": "FFn1jiclP_A",
+          "vibeScore": 0.353
+        },
+        {
+          "position": 7,
+          "title": "BIRDS OF A FEATHER",
+          "artist": "Billie Eilish",
+          "videoId": "V9PVRfjEBTI",
+          "vibeScore": 0.382
+        },
+        {
+          "position": 8,
+          "title": "Love Me Not",
+          "artist": "Ravyn Lenae",
+          "videoId": "cswfR85D7jM",
+          "vibeScore": 0.411
+        },
+        {
+          "position": 9,
+          "title": "Hit Sale (feat. Roméo Elvis)",
+          "artist": "Therapie Taxi",
+          "videoId": "CpTLFchI8Zk",
+          "vibeScore": 0.431
+        },
+        {
+          "position": 10,
+          "title": "Beautiful Things",
+          "artist": "Benson Boone",
+          "videoId": "Oa_RSwwpPaA",
+          "vibeScore": 0.473
+        },
+        {
+          "position": 11,
+          "title": "Show Me Love",
+          "artist": "WizTheMc",
+          "videoId": "Z3aduh5fxCo",
+          "vibeScore": 0.49
+        },
+        {
+          "position": 12,
+          "title": "Ordinary",
+          "artist": "Alex Warren",
+          "videoId": "u2ah9tWTkmk",
+          "vibeScore": 0.515
+        },
+        {
+          "position": 13,
+          "title": "Sweater Weather (Official Video)",
+          "artist": "The Neighbourhood",
+          "videoId": "GCdwKhTtNNw",
+          "vibeScore": 0.561
+        }
+      ]
+    },
+    "2": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "DIPLOMATICO",
+          "artist": "ElGrandeToto",
+          "videoId": "IABtAdP1Qp8",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "MAGHRIBI",
+          "artist": "ElGrandeToto",
+          "videoId": "nvd1lJDCvEA",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Seya",
+          "artist": "Morad",
+          "videoId": "uUAJFN7-FdQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Nadi Canadi",
+          "artist": "Tagne",
+          "videoId": "Uufffwh5GrQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Tach",
+          "artist": "Draganov",
+          "videoId": "9QBwrzff06g",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Cella 4",
+          "artist": "Baby Gang",
+          "videoId": "HhrcKRLFhlc",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Zarzour",
+          "artist": "Lartiste",
+          "videoId": "0jh9ieo5SpE",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Mghayer",
+          "artist": "ElGrandeToto",
+          "videoId": "eBNWq-bYxWg",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "YA BABA (feat. French Montana)",
+          "artist": "DYSTINCT",
+          "videoId": "pX_TaoV6azw",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Still Alive",
+          "artist": "Raste",
+          "videoId": "RhfpMfsplpM",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "L'APPEL",
+          "artist": "7-TOUN",
+          "videoId": "EnUyJ9bBN9Y",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "BGHAWNI",
+          "artist": "ElGrandeToto",
+          "videoId": "v22FrFFzRCI",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Hinata",
+          "artist": "TIF",
+          "videoId": "5-ZWIZt8naM",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "DIPLOMATICO",
+          "artist": "ElGrandeToto",
+          "videoId": "IABtAdP1Qp8",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "BGHAWNI",
+          "artist": "ElGrandeToto",
+          "videoId": "v22FrFFzRCI",
+          "vibeScore": 0.311
+        },
+        {
+          "position": 3,
+          "title": "MAGHRIBI",
+          "artist": "ElGrandeToto",
+          "videoId": "nvd1lJDCvEA",
+          "vibeScore": 0.409
+        },
+        {
+          "position": 4,
+          "title": "Tach",
+          "artist": "Draganov",
+          "videoId": "9QBwrzff06g",
+          "vibeScore": 0.419
+        },
+        {
+          "position": 5,
+          "title": "L'APPEL",
+          "artist": "7-TOUN",
+          "videoId": "EnUyJ9bBN9Y",
+          "vibeScore": 0.42
+        },
+        {
+          "position": 6,
+          "title": "Mghayer",
+          "artist": "ElGrandeToto",
+          "videoId": "eBNWq-bYxWg",
+          "vibeScore": 0.43
+        },
+        {
+          "position": 7,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0.444
+        },
+        {
+          "position": 8,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0.46
+        },
+        {
+          "position": 9,
+          "title": "Nadi Canadi",
+          "artist": "Tagne",
+          "videoId": "Uufffwh5GrQ",
+          "vibeScore": 0.46
+        },
+        {
+          "position": 10,
+          "title": "Zarzour",
+          "artist": "Lartiste",
+          "videoId": "0jh9ieo5SpE",
+          "vibeScore": 0.481
+        },
+        {
+          "position": 11,
+          "title": "YA BABA (feat. French Montana)",
+          "artist": "DYSTINCT",
+          "videoId": "pX_TaoV6azw",
+          "vibeScore": 0.496
+        },
+        {
+          "position": 12,
+          "title": "Seya",
+          "artist": "Morad",
+          "videoId": "uUAJFN7-FdQ",
+          "vibeScore": 0.506
+        },
+        {
+          "position": 13,
+          "title": "Hinata",
+          "artist": "TIF",
+          "videoId": "5-ZWIZt8naM",
+          "vibeScore": 0.514
+        },
+        {
+          "position": 14,
+          "title": "Cella 4",
+          "artist": "Baby Gang",
+          "videoId": "HhrcKRLFhlc",
+          "vibeScore": 0.534
+        },
+        {
+          "position": 15,
+          "title": "Still Alive",
+          "artist": "Raste",
+          "videoId": "RhfpMfsplpM",
+          "vibeScore": 0.548
+        }
+      ]
+    },
+    "3": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "LOVE YOU",
+          "artist": "Nono La Grinta",
+          "videoId": "zaX-2HGB33o",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "MALABAR",
+          "artist": "Yorssy",
+          "videoId": "wqXe3DrJrF0",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Catalina",
+          "artist": "Cheu-B",
+          "videoId": "ikaLDxb_xBA",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Toute la nuit",
+          "artist": "GP Explorer",
+          "videoId": "La4fKERNuIU",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Amber",
+          "artist": "Zola",
+          "videoId": "-DiMnSECEJI",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "1h55",
+          "artist": "Hamza",
+          "videoId": "MGVFaDxThaI",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Biff pas d'love",
+          "artist": "Bouss",
+          "videoId": "TDO0GRay2fQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Ninho - Zipette (Clip officiel)",
+          "artist": "Ninho",
+          "videoId": "5lzbP4ddQz8",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Restaurant",
+          "artist": "Nono La Grinta",
+          "videoId": "6LtNlSI0JrA",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Canon (feat. Niska)",
+          "artist": "La Mano 1.9",
+          "videoId": "8fY2wjKNM9s",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "LOVE YOU",
+          "artist": "Nono La Grinta",
+          "videoId": "zaX-2HGB33o",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "Restaurant",
+          "artist": "Nono La Grinta",
+          "videoId": "6LtNlSI0JrA",
+          "vibeScore": 0.264
+        },
+        {
+          "position": 3,
+          "title": "Toute la nuit",
+          "artist": "GP Explorer",
+          "videoId": "La4fKERNuIU",
+          "vibeScore": 0.328
+        },
+        {
+          "position": 4,
+          "title": "1h55",
+          "artist": "Hamza",
+          "videoId": "MGVFaDxThaI",
+          "vibeScore": 0.356
+        },
+        {
+          "position": 5,
+          "title": "MALABAR",
+          "artist": "Yorssy",
+          "videoId": "wqXe3DrJrF0",
+          "vibeScore": 0.369
+        },
+        {
+          "position": 6,
+          "title": "Biff pas d'love",
+          "artist": "Bouss",
+          "videoId": "TDO0GRay2fQ",
+          "vibeScore": 0.378
+        },
+        {
+          "position": 7,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0.392
+        },
+        {
+          "position": 8,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0.417
+        },
+        {
+          "position": 9,
+          "title": "Catalina",
+          "artist": "Cheu-B",
+          "videoId": "ikaLDxb_xBA",
+          "vibeScore": 0.43
+        },
+        {
+          "position": 10,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0.443
+        },
+        {
+          "position": 11,
+          "title": "Amber",
+          "artist": "Zola",
+          "videoId": "-DiMnSECEJI",
+          "vibeScore": 0.445
+        },
+        {
+          "position": 12,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0.456
+        },
+        {
+          "position": 13,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0.462
+        },
+        {
+          "position": 14,
+          "title": "Canon (feat. Niska)",
+          "artist": "La Mano 1.9",
+          "videoId": "8fY2wjKNM9s",
+          "vibeScore": 0.491
+        },
+        {
+          "position": 15,
+          "title": "Ninho - Zipette (Clip officiel)",
+          "artist": "Ninho",
+          "videoId": "5lzbP4ddQz8",
+          "vibeScore": 0.506
+        }
+      ]
+    },
+    "4": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Melrose Place (feat. Guy2Bezbar)",
+          "artist": "KeBlack",
+          "videoId": "dxnacr0NriQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Mano",
+          "artist": "Franglish",
+          "videoId": "qEeRyIgFSNI",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "soso",
+          "artist": "Omah Lay",
+          "videoId": "k6eE3c70hgg",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Mood",
+          "artist": "KeBlack",
+          "videoId": "Ow07uqhyYwo",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Bolingo",
+          "artist": "Franglish",
+          "videoId": "pphikr9itfk",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "No Wahala",
+          "artist": "1da Banton",
+          "videoId": "Rxym2vuZn8M",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Minimum ça",
+          "artist": "Dr. Yaro",
+          "videoId": "Xjws8nS606Q",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Boulot (feat. SDM)",
+          "artist": "KeBlack",
+          "videoId": "78hQVC5njKc",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Trop parler",
+          "artist": "Franglish",
+          "videoId": "0V4MbM-2IFw",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "D O D O",
+          "artist": "Tayc",
+          "videoId": "NrdhxCM3aAY",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Laisse moi",
+          "artist": "KeBlack",
+          "videoId": "09UIEAqzxwc",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Squad / Petit coeur",
+          "artist": "Franglish",
+          "videoId": "oCdlZ_1aMMg",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "Squad / Petit coeur",
+          "artist": "Franglish",
+          "videoId": "oCdlZ_1aMMg",
+          "vibeScore": 0.283
+        },
+        {
+          "position": 3,
+          "title": "Trop parler",
+          "artist": "Franglish",
+          "videoId": "0V4MbM-2IFw",
+          "vibeScore": 0.323
+        },
+        {
+          "position": 4,
+          "title": "Bolingo",
+          "artist": "Franglish",
+          "videoId": "pphikr9itfk",
+          "vibeScore": 0.364
+        },
+        {
+          "position": 5,
+          "title": "Mano",
+          "artist": "Franglish",
+          "videoId": "qEeRyIgFSNI",
+          "vibeScore": 0.383
+        },
+        {
+          "position": 6,
+          "title": "Mood",
+          "artist": "KeBlack",
+          "videoId": "Ow07uqhyYwo",
+          "vibeScore": 0.394
+        },
+        {
+          "position": 7,
+          "title": "Boulot (feat. SDM)",
+          "artist": "KeBlack",
+          "videoId": "78hQVC5njKc",
+          "vibeScore": 0.406
+        },
+        {
+          "position": 8,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0.423
+        },
+        {
+          "position": 9,
+          "title": "Laisse moi",
+          "artist": "KeBlack",
+          "videoId": "09UIEAqzxwc",
+          "vibeScore": 0.437
+        },
+        {
+          "position": 10,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0.505
+        },
+        {
+          "position": 11,
+          "title": "Minimum ça",
+          "artist": "Dr. Yaro",
+          "videoId": "Xjws8nS606Q",
+          "vibeScore": 0.529
+        },
+        {
+          "position": 12,
+          "title": "Melrose Place (feat. Guy2Bezbar)",
+          "artist": "KeBlack",
+          "videoId": "dxnacr0NriQ",
+          "vibeScore": 0.593
+        },
+        {
+          "position": 13,
+          "title": "No Wahala",
+          "artist": "1da Banton",
+          "videoId": "Rxym2vuZn8M",
+          "vibeScore": 0.62
+        },
+        {
+          "position": 14,
+          "title": "D O D O",
+          "artist": "Tayc",
+          "videoId": "NrdhxCM3aAY",
+          "vibeScore": 0.646
+        },
+        {
+          "position": 15,
+          "title": "soso",
+          "artist": "Omah Lay",
+          "videoId": "k6eE3c70hgg",
+          "vibeScore": 0.682
+        }
+      ]
+    },
+    "5": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "PARISIENNE",
+          "artist": "GIMS",
+          "videoId": "7CGKeID7nRc",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "SOIS PAS TIMIDE",
+          "artist": "GIMS",
+          "videoId": "Sq5EDI7JktA",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Crime ensoleillé",
+          "artist": "La Mano 1.9",
+          "videoId": "BIAaiOqU30k",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Melrose Place (feat. Guy2Bezbar)",
+          "artist": "KeBlack",
+          "videoId": "dxnacr0NriQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "APPELLE TA COPINE",
+          "artist": "GIMS",
+          "videoId": "gtvQOusc5mQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Los Angeles",
+          "artist": "Siaka",
+          "videoId": "V9GKy7gLyTo",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Moulaga (feat. JuL)",
+          "artist": "Heuss L'Enfoiré",
+          "videoId": "5OAysfkcMjg",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Passe ton chemin",
+          "artist": "Lynda",
+          "videoId": "BjfP86szUL0",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "TU ME RENDS BÊTE",
+          "artist": "GIMS",
+          "videoId": "YKR0qyxxkfs",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "C’est carré le s",
+          "artist": "Gazo",
+          "videoId": "_La5RaE5GF4",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "NINAO",
+          "artist": "GIMS",
+          "videoId": "VT2qF97pQNw",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "TDB",
+          "artist": "OBOY",
+          "videoId": "9Oh3knWDBnA",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "PARISIENNE",
+          "artist": "GIMS",
+          "videoId": "7CGKeID7nRc",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "APPELLE TA COPINE",
+          "artist": "GIMS",
+          "videoId": "gtvQOusc5mQ",
+          "vibeScore": 0.209
+        },
+        {
+          "position": 3,
+          "title": "SOIS PAS TIMIDE",
+          "artist": "GIMS",
+          "videoId": "Sq5EDI7JktA",
+          "vibeScore": 0.228
+        },
+        {
+          "position": 4,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0.275
+        },
+        {
+          "position": 5,
+          "title": "TU ME RENDS BÊTE",
+          "artist": "GIMS",
+          "videoId": "YKR0qyxxkfs",
+          "vibeScore": 0.291
+        },
+        {
+          "position": 6,
+          "title": "NINAO",
+          "artist": "GIMS",
+          "videoId": "VT2qF97pQNw",
+          "vibeScore": 0.293
+        },
+        {
+          "position": 7,
+          "title": "C’est carré le s",
+          "artist": "Gazo",
+          "videoId": "_La5RaE5GF4",
+          "vibeScore": 0.354
+        },
+        {
+          "position": 8,
+          "title": "Los Angeles",
+          "artist": "Siaka",
+          "videoId": "V9GKy7gLyTo",
+          "vibeScore": 0.368
+        },
+        {
+          "position": 9,
+          "title": "Moulaga (feat. JuL)",
+          "artist": "Heuss L'Enfoiré",
+          "videoId": "5OAysfkcMjg",
+          "vibeScore": 0.386
+        },
+        {
+          "position": 10,
+          "title": "Crime ensoleillé",
+          "artist": "La Mano 1.9",
+          "videoId": "BIAaiOqU30k",
+          "vibeScore": 0.395
+        },
+        {
+          "position": 11,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0.403
+        },
+        {
+          "position": 12,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0.428
+        },
+        {
+          "position": 13,
+          "title": "TDB",
+          "artist": "OBOY",
+          "videoId": "9Oh3knWDBnA",
+          "vibeScore": 0.43
+        },
+        {
+          "position": 14,
+          "title": "Passe ton chemin",
+          "artist": "Lynda",
+          "videoId": "BjfP86szUL0",
+          "vibeScore": 0.435
+        },
+        {
+          "position": 15,
+          "title": "Melrose Place (feat. Guy2Bezbar)",
+          "artist": "KeBlack",
+          "videoId": "dxnacr0NriQ",
+          "vibeScore": 0.489
+        }
+      ]
+    },
+    "6": null,
+    "7": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "ZOU BISOU",
+          "artist": "Theodora",
+          "videoId": "x8JraA4K14c",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "KONGOLESE SOUS BBL",
+          "artist": "Theodora",
+          "videoId": "FpAkKxmIYVA",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Pim pom (feat. Shay)",
+          "artist": "Jul",
+          "videoId": "iF8p2xT0Xbk",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Adriano",
+          "artist": "Niska",
+          "videoId": "2EUM34klsL8",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Baddies",
+          "artist": "Aya Nakamura",
+          "videoId": "cBJ5FbM0LnQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "FASHION DESIGNA",
+          "artist": "Theodora",
+          "videoId": "u0P3k_d6ypg",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Pa Pa Paw",
+          "artist": "Damso",
+          "videoId": "RMrO5_wl3-w",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "dLgtd1k7lB0",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Whine",
+          "artist": "TKS 2G",
+          "videoId": "8afFnvQD06o",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "MON BÉBÉ (feat. Brazy)",
+          "artist": "Theodora",
+          "videoId": "1uWCsAtWbg0",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "RK & Genezio x Niska - Viano x Adriano (Shad Hottaboy transition)",
+          "artist": "Shad",
+          "videoId": "FGS4PqPxzAE",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Petit génie (feat. Abou Debeing & Lossa)",
+          "artist": "Jungeli",
+          "videoId": "iANdoKq5ty4",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Panama (feat. Hamza)",
+          "artist": "Kaaris",
+          "videoId": "zkv1QGtQnMg",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "MASOKO NA MABELE",
+          "artist": "Theodora",
+          "videoId": "5HhyIRIT_14",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Moulaga (feat. JUL)",
+          "artist": "Heuss L'enfoiré",
+          "videoId": "B0__pa7KgFA",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "ZOU BISOU",
+          "artist": "Theodora",
+          "videoId": "x8JraA4K14c",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "KONGOLESE SOUS BBL",
+          "artist": "Theodora",
+          "videoId": "FpAkKxmIYVA",
+          "vibeScore": 0.286
+        },
+        {
+          "position": 3,
+          "title": "MASOKO NA MABELE",
+          "artist": "Theodora",
+          "videoId": "5HhyIRIT_14",
+          "vibeScore": 0.289
+        },
+        {
+          "position": 4,
+          "title": "MON BÉBÉ (feat. Brazy)",
+          "artist": "Theodora",
+          "videoId": "1uWCsAtWbg0",
+          "vibeScore": 0.327
+        },
+        {
+          "position": 5,
+          "title": "Whine",
+          "artist": "TKS 2G",
+          "videoId": "8afFnvQD06o",
+          "vibeScore": 0.375
+        },
+        {
+          "position": 6,
+          "title": "Moulaga (feat. JUL)",
+          "artist": "Heuss L'enfoiré",
+          "videoId": "B0__pa7KgFA",
+          "vibeScore": 0.376
+        },
+        {
+          "position": 7,
+          "title": "FASHION DESIGNA",
+          "artist": "Theodora",
+          "videoId": "u0P3k_d6ypg",
+          "vibeScore": 0.401
+        },
+        {
+          "position": 8,
+          "title": "Baddies",
+          "artist": "Aya Nakamura",
+          "videoId": "cBJ5FbM0LnQ",
+          "vibeScore": 0.421
+        },
+        {
+          "position": 9,
+          "title": "Adriano",
+          "artist": "Niska",
+          "videoId": "2EUM34klsL8",
+          "vibeScore": 0.426
+        },
+        {
+          "position": 10,
+          "title": "Petit génie (feat. Abou Debeing & Lossa)",
+          "artist": "Jungeli",
+          "videoId": "iANdoKq5ty4",
+          "vibeScore": 0.458
+        },
+        {
+          "position": 11,
+          "title": "Pa Pa Paw",
+          "artist": "Damso",
+          "videoId": "RMrO5_wl3-w",
+          "vibeScore": 0.487
+        },
+        {
+          "position": 12,
+          "title": "Panama (feat. Hamza)",
+          "artist": "Kaaris",
+          "videoId": "zkv1QGtQnMg",
+          "vibeScore": 0.515
+        },
+        {
+          "position": 13,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "dLgtd1k7lB0",
+          "vibeScore": 0.531
+        }
+      ]
+    },
+    "8": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "BIRDS OF A FEATHER",
+          "artist": "Billie Eilish",
+          "videoId": "V9PVRfjEBTI",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "lovely",
+          "artist": "Billie Eilish",
+          "videoId": "V1Pl8CzNzCw",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Die With A Smile",
+          "artist": "Lady Gaga",
+          "videoId": "kPa7bsKwL-c",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Save Your Tears (Remix) (Official Video)",
+          "artist": "The Weeknd",
+          "videoId": "LIIDh-qI9oI",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Espresso",
+          "artist": "Sabrina Carpenter",
+          "videoId": "eVli-tstM5E",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Ordinary",
+          "artist": "Alex Warren",
+          "videoId": "u2ah9tWTkmk",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "videoId": "H5v3kku4y6Q",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Summertime Sadness",
+          "artist": "Lana Del Rey",
+          "videoId": "TdrL3QxjyVw",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Too Sweet",
+          "artist": "Hozier",
+          "videoId": "NTpbbQUBbuo",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Until I Found You",
+          "artist": "Stephen Sanchez",
+          "videoId": "GxldQ9eX2wo",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Levitating (feat. DaBaby)",
+          "artist": "Dua Lipa",
+          "videoId": "TUVcZfQe-Kw",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Bad Dreams",
+          "artist": "Teddy Swims",
+          "videoId": "Qh8QwVYOSVU",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "WILDFLOWER",
+          "artist": "Billie Eilish",
+          "videoId": "210Uq0WmBDI",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Symphony",
+          "artist": "Clean Bandit",
+          "videoId": "aatr_2MstrI",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Runaway",
+          "artist": "AURORA",
+          "videoId": "d_HlPboLRL8",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "BIRDS OF A FEATHER",
+          "artist": "Billie Eilish",
+          "videoId": "V9PVRfjEBTI",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "WILDFLOWER",
+          "artist": "Billie Eilish",
+          "videoId": "210Uq0WmBDI",
+          "vibeScore": 0.264
+        },
+        {
+          "position": 3,
+          "title": "lovely",
+          "artist": "Billie Eilish",
+          "videoId": "V1Pl8CzNzCw",
+          "vibeScore": 0.327
+        },
+        {
+          "position": 4,
+          "title": "Symphony",
+          "artist": "Clean Bandit",
+          "videoId": "aatr_2MstrI",
+          "vibeScore": 0.371
+        },
+        {
+          "position": 5,
+          "title": "Die With A Smile",
+          "artist": "Lady Gaga",
+          "videoId": "kPa7bsKwL-c",
+          "vibeScore": 0.427
+        },
+        {
+          "position": 6,
+          "title": "As It Was",
+          "artist": "Harry Styles",
+          "videoId": "H5v3kku4y6Q",
+          "vibeScore": 0.441
+        },
+        {
+          "position": 7,
+          "title": "Save Your Tears (Remix) (Official Video)",
+          "artist": "The Weeknd",
+          "videoId": "LIIDh-qI9oI",
+          "vibeScore": 0.448
+        },
+        {
+          "position": 8,
+          "title": "Bad Dreams",
+          "artist": "Teddy Swims",
+          "videoId": "Qh8QwVYOSVU",
+          "vibeScore": 0.45
+        },
+        {
+          "position": 9,
+          "title": "Summertime Sadness",
+          "artist": "Lana Del Rey",
+          "videoId": "TdrL3QxjyVw",
+          "vibeScore": 0.457
+        },
+        {
+          "position": 10,
+          "title": "Too Sweet",
+          "artist": "Hozier",
+          "videoId": "NTpbbQUBbuo",
+          "vibeScore": 0.465
+        },
+        {
+          "position": 11,
+          "title": "Until I Found You",
+          "artist": "Stephen Sanchez",
+          "videoId": "GxldQ9eX2wo",
+          "vibeScore": 0.478
+        },
+        {
+          "position": 12,
+          "title": "Levitating (feat. DaBaby)",
+          "artist": "Dua Lipa",
+          "videoId": "TUVcZfQe-Kw",
+          "vibeScore": 0.489
+        },
+        {
+          "position": 13,
+          "title": "Runaway",
+          "artist": "AURORA",
+          "videoId": "d_HlPboLRL8",
+          "vibeScore": 0.492
+        },
+        {
+          "position": 14,
+          "title": "Espresso",
+          "artist": "Sabrina Carpenter",
+          "videoId": "eVli-tstM5E",
+          "vibeScore": 0.498
+        },
+        {
+          "position": 15,
+          "title": "Ordinary",
+          "artist": "Alex Warren",
+          "videoId": "u2ah9tWTkmk",
+          "vibeScore": 0.511
+        }
+      ]
+    },
+    "9": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "Biff pas d'love",
+          "artist": "Bouss",
+          "videoId": "TDO0GRay2fQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Parler tout bas",
+          "artist": "Bouss",
+          "videoId": "CWcEv17US4A",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Tu sais",
+          "artist": "Djadja & Dinaz",
+          "videoId": "04EfAtfECYI",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Mirage",
+          "artist": "Bouss",
+          "videoId": "f6eer1-XSJo",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "NUMBER ONE (feat. Minz)",
+          "artist": "Himra",
+          "videoId": "b16_UBiP4G0",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Mon amour",
+          "artist": "Bouss",
+          "videoId": "AyBKmFu0EWM",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Bouss - La course (Clip officiel)",
+          "artist": "Bouss",
+          "videoId": "LWXN0Pzi0d4",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Tiki Taka",
+          "artist": "Vacra",
+          "videoId": "myCfEkizbgw",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "Biff pas d'love",
+          "artist": "Bouss",
+          "videoId": "TDO0GRay2fQ",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "Mon amour",
+          "artist": "Bouss",
+          "videoId": "AyBKmFu0EWM",
+          "vibeScore": 0.266
+        },
+        {
+          "position": 3,
+          "title": "Bouss - La course (Clip officiel)",
+          "artist": "Bouss",
+          "videoId": "LWXN0Pzi0d4",
+          "vibeScore": 0.295
+        },
+        {
+          "position": 4,
+          "title": "MON BÉBÉ",
+          "artist": "RnBoi",
+          "videoId": "U2t5Y89I2tE",
+          "vibeScore": 0.333
+        },
+        {
+          "position": 5,
+          "title": "Parler tout bas",
+          "artist": "Bouss",
+          "videoId": "CWcEv17US4A",
+          "vibeScore": 0.343
+        },
+        {
+          "position": 6,
+          "title": "Mirage",
+          "artist": "Bouss",
+          "videoId": "f6eer1-XSJo",
+          "vibeScore": 0.348
+        },
+        {
+          "position": 7,
+          "title": "Tiki Taka",
+          "artist": "Vacra",
+          "videoId": "myCfEkizbgw",
+          "vibeScore": 0.36
+        },
+        {
+          "position": 8,
+          "title": "Génération impolie",
+          "artist": "Franglish",
+          "videoId": "MSRXoAZ1ue8",
+          "vibeScore": 0.373
+        },
+        {
+          "position": 9,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0.379
+        },
+        {
+          "position": 10,
+          "title": "Tu sais",
+          "artist": "Djadja & Dinaz",
+          "videoId": "04EfAtfECYI",
+          "vibeScore": 0.395
+        },
+        {
+          "position": 11,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0.41
+        },
+        {
+          "position": 12,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0.412
+        },
+        {
+          "position": 13,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0.432
+        },
+        {
+          "position": 14,
+          "title": "NUMBER ONE (feat. Minz)",
+          "artist": "Himra",
+          "videoId": "b16_UBiP4G0",
+          "vibeScore": 0.434
+        },
+        {
+          "position": 15,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0.515
+        }
+      ]
+    },
+    "10": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "JAMAIS TOI",
+          "artist": "R2",
+          "videoId": "fPG4g6v0bS0",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "PSYCHOLOGIQUE",
+          "artist": "Tiakola",
+          "videoId": "b-8p6mGDKpE",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Catalina",
+          "artist": "Cheu-B",
+          "videoId": "ikaLDxb_xBA",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Malembe",
+          "artist": "Franglish",
+          "videoId": "a9GeotvTA4s",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Amis d'enfance",
+          "artist": "Rsko",
+          "videoId": "85n4cnNAXeI",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "AIR FORCE BLANCHE (feat. JuL)",
+          "artist": "GIMS",
+          "videoId": "mvdF42vbb-E",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Piranha (feat. Vacra)",
+          "artist": "Nahir",
+          "videoId": "iObRN148PcI",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "MALABAR",
+          "artist": "Yorssy",
+          "videoId": "wqXe3DrJrF0",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Busy",
+          "artist": "kulturr",
+          "videoId": "4pelyjiG8tA",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "BUSINESS MAN",
+          "artist": "Liim's",
+          "videoId": "jGpCvSMcRyY",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "LAMINE",
+          "artist": "Morad",
+          "videoId": "W1I5wf67Jpo",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "TIMINIK (feat. Yorssy)",
+          "artist": "R2",
+          "videoId": "EF_aHXPuTAo",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0.327
+        },
+        {
+          "position": 3,
+          "title": "Paris",
+          "artist": "Nono La Grinta",
+          "videoId": "pVk1BwE_LLg",
+          "vibeScore": 0.331
+        },
+        {
+          "position": 4,
+          "title": "JAMAIS TOI",
+          "artist": "R2",
+          "videoId": "fPG4g6v0bS0",
+          "vibeScore": 0.342
+        },
+        {
+          "position": 5,
+          "title": "Amis d'enfance",
+          "artist": "Rsko",
+          "videoId": "85n4cnNAXeI",
+          "vibeScore": 0.358
+        },
+        {
+          "position": 6,
+          "title": "PSYCHOLOGIQUE",
+          "artist": "Tiakola",
+          "videoId": "b-8p6mGDKpE",
+          "vibeScore": 0.363
+        },
+        {
+          "position": 7,
+          "title": "Busy",
+          "artist": "kulturr",
+          "videoId": "4pelyjiG8tA",
+          "vibeScore": 0.373
+        },
+        {
+          "position": 8,
+          "title": "MALABAR",
+          "artist": "Yorssy",
+          "videoId": "wqXe3DrJrF0",
+          "vibeScore": 0.39
+        },
+        {
+          "position": 9,
+          "title": "BUSINESS MAN",
+          "artist": "Liim's",
+          "videoId": "jGpCvSMcRyY",
+          "vibeScore": 0.42
+        },
+        {
+          "position": 10,
+          "title": "Catalina",
+          "artist": "Cheu-B",
+          "videoId": "ikaLDxb_xBA",
+          "vibeScore": 0.436
+        },
+        {
+          "position": 11,
+          "title": "TIMINIK (feat. Yorssy)",
+          "artist": "R2",
+          "videoId": "EF_aHXPuTAo",
+          "vibeScore": 0.442
+        },
+        {
+          "position": 12,
+          "title": "Piranha (feat. Vacra)",
+          "artist": "Nahir",
+          "videoId": "iObRN148PcI",
+          "vibeScore": 0.444
+        },
+        {
+          "position": 13,
+          "title": "AIR FORCE BLANCHE (feat. JuL)",
+          "artist": "GIMS",
+          "videoId": "mvdF42vbb-E",
+          "vibeScore": 0.455
+        },
+        {
+          "position": 14,
+          "title": "LAMINE",
+          "artist": "Morad",
+          "videoId": "W1I5wf67Jpo",
+          "vibeScore": 0.504
+        },
+        {
+          "position": 15,
+          "title": "Malembe",
+          "artist": "Franglish",
+          "videoId": "a9GeotvTA4s",
+          "vibeScore": 0.507
+        }
+      ]
+    },
+    "11": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "FASHION DESIGNA",
+          "artist": "Theodora",
+          "videoId": "HfXmXQ9nxWY",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "PAY!",
+          "artist": "Theodora",
+          "videoId": "wnLFntG-jvY",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Tiki Taka",
+          "artist": "Vacra",
+          "videoId": "myCfEkizbgw",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Boucan (feat. Franglish)",
+          "artist": "KeBlack",
+          "videoId": "WQQ4pBn1gHs",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Petit Génie (feat. Abou Debeing & Lossa 6)",
+          "artist": "Jungeli",
+          "videoId": "Q3RR6ffTTBw",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Charm",
+          "artist": "Rema",
+          "videoId": "dNt1QR1ecuM",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Doudou",
+          "artist": "Aya Nakamura",
+          "videoId": "NAA31YId_sQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "UNAVAILABLE (feat. Musa Keys)",
+          "artist": "Davido",
+          "videoId": "OSBan_sH_b8",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Shatta Confessions",
+          "artist": "Meryl",
+          "videoId": "qRyBpbJvO8Y",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Wayeh",
+          "artist": "THEODORT",
+          "videoId": "nh6gI_hzjdw",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Laptop",
+          "artist": "Kalash & Maureen",
+          "videoId": "X0GWC5HdFWc",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "KU LO SA - A COLORS SHOW",
+          "artist": "Oxlade",
+          "videoId": "1pDQjwaH3qk",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "D O D O",
+          "artist": "Tayc",
+          "videoId": "NrdhxCM3aAY",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "No Wahala",
+          "artist": "1da Banton",
+          "videoId": "Rxym2vuZn8M",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "FASHION DESIGNA",
+          "artist": "Theodora",
+          "videoId": "HfXmXQ9nxWY",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "PAY!",
+          "artist": "Theodora",
+          "videoId": "wnLFntG-jvY",
+          "vibeScore": 0.293
+        },
+        {
+          "position": 3,
+          "title": "Shatta Confessions",
+          "artist": "Meryl",
+          "videoId": "qRyBpbJvO8Y",
+          "vibeScore": 0.387
+        },
+        {
+          "position": 4,
+          "title": "Laptop",
+          "artist": "Kalash & Maureen",
+          "videoId": "X0GWC5HdFWc",
+          "vibeScore": 0.395
+        },
+        {
+          "position": 5,
+          "title": "Doudou",
+          "artist": "Aya Nakamura",
+          "videoId": "NAA31YId_sQ",
+          "vibeScore": 0.395
+        },
+        {
+          "position": 6,
+          "title": "Charm",
+          "artist": "Rema",
+          "videoId": "dNt1QR1ecuM",
+          "vibeScore": 0.426
+        },
+        {
+          "position": 7,
+          "title": "Wayeh",
+          "artist": "THEODORT",
+          "videoId": "nh6gI_hzjdw",
+          "vibeScore": 0.435
+        },
+        {
+          "position": 8,
+          "title": "D O D O",
+          "artist": "Tayc",
+          "videoId": "NrdhxCM3aAY",
+          "vibeScore": 0.436
+        },
+        {
+          "position": 9,
+          "title": "Tiki Taka",
+          "artist": "Vacra",
+          "videoId": "myCfEkizbgw",
+          "vibeScore": 0.438
+        },
+        {
+          "position": 10,
+          "title": "Boucan (feat. Franglish)",
+          "artist": "KeBlack",
+          "videoId": "WQQ4pBn1gHs",
+          "vibeScore": 0.46
+        },
+        {
+          "position": 11,
+          "title": "Petit Génie (feat. Abou Debeing & Lossa 6)",
+          "artist": "Jungeli",
+          "videoId": "Q3RR6ffTTBw",
+          "vibeScore": 0.484
+        },
+        {
+          "position": 12,
+          "title": "No Wahala",
+          "artist": "1da Banton",
+          "videoId": "Rxym2vuZn8M",
+          "vibeScore": 0.498
+        },
+        {
+          "position": 13,
+          "title": "Tour du monde (feat. L2B)",
+          "artist": "Soolking",
+          "videoId": "j5iOQ9qgThg",
+          "vibeScore": 0.506
+        },
+        {
+          "position": 14,
+          "title": "UNAVAILABLE (feat. Musa Keys)",
+          "artist": "Davido",
+          "videoId": "OSBan_sH_b8",
+          "vibeScore": 0.527
+        },
+        {
+          "position": 15,
+          "title": "KU LO SA - A COLORS SHOW",
+          "artist": "Oxlade",
+          "videoId": "1pDQjwaH3qk",
+          "vibeScore": 0.588
+        }
+      ]
+    },
+    "12": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "CARTIER SANTOS",
+          "artist": "SDM",
+          "videoId": "4lRWIQzuge8",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "POUR ELLE",
+          "artist": "SDM",
+          "videoId": "eYG5Qg6RCyE",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Printemps",
+          "artist": "Bouss",
+          "videoId": "hnd84Ru1dgA",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Impardonnable",
+          "artist": "Damso",
+          "videoId": "ewt2-_OuFR8",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Ninho - Putana (Clip officiel)",
+          "artist": "Ninho",
+          "videoId": "GnSj28eryK0",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Parle-moi (feat. SDM)",
+          "artist": "Favé",
+          "videoId": "-h5aqLfrVgY",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "NANANI NANANA",
+          "artist": "Gazo",
+          "videoId": "8Bkgi6yB6P8",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Bolingo",
+          "artist": "Franglish",
+          "videoId": "pphikr9itfk",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Prince de la Calle",
+          "artist": "SDM",
+          "videoId": "p65G-7xFlkU",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Saga",
+          "artist": "Booba",
+          "videoId": "2Jq21pM9CQc",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Pélican",
+          "artist": "L2B",
+          "videoId": "1943hnaZoYg",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "NUMBER ONE (feat. Minz)",
+          "artist": "Himra",
+          "videoId": "b16_UBiP4G0",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Bolide allemand",
+          "artist": "SDM",
+          "videoId": "WcX37NouKxw",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Location",
+          "artist": "Werenoi",
+          "videoId": "39V2jvBv-js",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "CARTIER SANTOS",
+          "artist": "SDM",
+          "videoId": "4lRWIQzuge8",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "POUR ELLE",
+          "artist": "SDM",
+          "videoId": "eYG5Qg6RCyE",
+          "vibeScore": 0.284
+        },
+        {
+          "position": 3,
+          "title": "Impardonnable",
+          "artist": "Damso",
+          "videoId": "ewt2-_OuFR8",
+          "vibeScore": 0.298
+        },
+        {
+          "position": 4,
+          "title": "RUINART",
+          "artist": "R2",
+          "videoId": "e2d9v6dbLHo",
+          "vibeScore": 0.316
+        },
+        {
+          "position": 5,
+          "title": "Printemps",
+          "artist": "Bouss",
+          "videoId": "hnd84Ru1dgA",
+          "vibeScore": 0.327
+        },
+        {
+          "position": 6,
+          "title": "Saga",
+          "artist": "Booba",
+          "videoId": "2Jq21pM9CQc",
+          "vibeScore": 0.336
+        },
+        {
+          "position": 7,
+          "title": "Prince de la Calle",
+          "artist": "SDM",
+          "videoId": "p65G-7xFlkU",
+          "vibeScore": 0.352
+        },
+        {
+          "position": 8,
+          "title": "Bolingo",
+          "artist": "Franglish",
+          "videoId": "pphikr9itfk",
+          "vibeScore": 0.368
+        },
+        {
+          "position": 9,
+          "title": "Location",
+          "artist": "Werenoi",
+          "videoId": "39V2jvBv-js",
+          "vibeScore": 0.37
+        },
+        {
+          "position": 10,
+          "title": "NANANI NANANA",
+          "artist": "Gazo",
+          "videoId": "8Bkgi6yB6P8",
+          "vibeScore": 0.373
+        },
+        {
+          "position": 11,
+          "title": "Bolide allemand",
+          "artist": "SDM",
+          "videoId": "WcX37NouKxw",
+          "vibeScore": 0.425
+        },
+        {
+          "position": 12,
+          "title": "Parle-moi (feat. SDM)",
+          "artist": "Favé",
+          "videoId": "-h5aqLfrVgY",
+          "vibeScore": 0.448
+        },
+        {
+          "position": 13,
+          "title": "Pélican",
+          "artist": "L2B",
+          "videoId": "1943hnaZoYg",
+          "vibeScore": 0.451
+        },
+        {
+          "position": 14,
+          "title": "NUMBER ONE (feat. Minz)",
+          "artist": "Himra",
+          "videoId": "b16_UBiP4G0",
+          "vibeScore": 0.544
+        }
+      ]
+    },
+    "13": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "Disfruto",
+          "artist": "Carla Morrison",
+          "videoId": "_ruEj-XK1lA",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Todo Fue Por Amor (de la película “Con Esta Luz”)",
+          "artist": "Carla Morrison",
+          "videoId": "FSExRpeGszY",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Somewhere Only We Know",
+          "artist": "Rhianne",
+          "videoId": "3oxjuUFj13w",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Let Her Go (Live from The Factory Theatre, Sydney)",
+          "artist": "Passenger",
+          "videoId": "RBumgq5yVrA",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Voilà (Clip Officiel)",
+          "artist": "Barbara Pravi",
+          "videoId": "VJuD7AnV-uw",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "Olvidé",
+          "artist": "Carla Morrison",
+          "videoId": "foXgseaTRF4",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Dernière danse",
+          "artist": "Indila",
+          "videoId": "K5KAc5CoCuk",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Summertime Sadness",
+          "artist": "Lana Del Rey",
+          "videoId": "TdrL3QxjyVw",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Soñar Contigo",
+          "artist": "Charlie Rodd",
+          "videoId": "r8OsW8sBkLI",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Contigo",
+          "artist": "Carla Morrison",
+          "videoId": "wcRrLspcJiQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Back To Black",
+          "artist": "Amy Winehouse",
+          "videoId": "TJAfLE39ZZ8",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "lovely",
+          "artist": "Billie Eilish",
+          "videoId": "V1Pl8CzNzCw",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Mad About You (Live at Koningin Elisabethzaal 2012)",
+          "artist": "Hooverphonic",
+          "videoId": "6EA-MIYY1bg",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "Cercanía",
+          "artist": "Carla Morrison",
+          "videoId": "mKnhmTQCFIw",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "I Got You (feat. Lola Marsh)",
+          "artist": "Lola Marsh",
+          "videoId": "p_GnJTl2HqI",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "Disfruto",
+          "artist": "Carla Morrison",
+          "videoId": "_ruEj-XK1lA",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "Contigo",
+          "artist": "Carla Morrison",
+          "videoId": "wcRrLspcJiQ",
+          "vibeScore": 0.16
+        },
+        {
+          "position": 3,
+          "title": "Cercanía",
+          "artist": "Carla Morrison",
+          "videoId": "mKnhmTQCFIw",
+          "vibeScore": 0.258
+        },
+        {
+          "position": 4,
+          "title": "Olvidé",
+          "artist": "Carla Morrison",
+          "videoId": "foXgseaTRF4",
+          "vibeScore": 0.26
+        },
+        {
+          "position": 5,
+          "title": "Soñar Contigo",
+          "artist": "Charlie Rodd",
+          "videoId": "r8OsW8sBkLI",
+          "vibeScore": 0.405
+        },
+        {
+          "position": 6,
+          "title": "Summertime Sadness",
+          "artist": "Lana Del Rey",
+          "videoId": "TdrL3QxjyVw",
+          "vibeScore": 0.48
+        },
+        {
+          "position": 7,
+          "title": "I Got You (feat. Lola Marsh)",
+          "artist": "Lola Marsh",
+          "videoId": "p_GnJTl2HqI",
+          "vibeScore": 0.496
+        },
+        {
+          "position": 8,
+          "title": "Somewhere Only We Know",
+          "artist": "Rhianne",
+          "videoId": "3oxjuUFj13w",
+          "vibeScore": 0.509
+        },
+        {
+          "position": 9,
+          "title": "lovely",
+          "artist": "Billie Eilish",
+          "videoId": "V1Pl8CzNzCw",
+          "vibeScore": 0.515
+        },
+        {
+          "position": 10,
+          "title": "Dernière danse",
+          "artist": "Indila",
+          "videoId": "K5KAc5CoCuk",
+          "vibeScore": 0.526
+        },
+        {
+          "position": 11,
+          "title": "Back To Black",
+          "artist": "Amy Winehouse",
+          "videoId": "TJAfLE39ZZ8",
+          "vibeScore": 0.546
+        }
+      ]
+    },
+    "14": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "Nostalgique",
+          "artist": "JuL",
+          "videoId": "N8JBP-quUUw",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Cœur Blanc",
+          "artist": "JUL",
+          "videoId": "_zC-EPlakho",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Automatique",
+          "artist": "Benab",
+          "videoId": "so6DbUQ-h0c",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "La Faille",
+          "artist": "JuL",
+          "videoId": "X8yNru9psQE",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "TRAFICANTE",
+          "artist": "Alonzo",
+          "videoId": "tFW9D3JDcA8",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Bolide allemand",
+          "artist": "SDM",
+          "videoId": "WcX37NouKxw",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Ça tourne dans ma tête",
+          "artist": "JuL",
+          "videoId": "D6lJb09l-3M",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Papel",
+          "artist": "Rim'K",
+          "videoId": "n4dORYpTJWA",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "Masterclass",
+          "artist": "Bouss",
+          "videoId": "16VvfPmgiuo",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "JuL - Phénoménal // Clip officiel // 2025",
+          "artist": "JuL",
+          "videoId": "wQpn095lyeM",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Van Dijk",
+          "artist": "La Fouine",
+          "videoId": "T6AsQd9NuoM",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "Nostalgique",
+          "artist": "JuL",
+          "videoId": "N8JBP-quUUw",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "La Faille",
+          "artist": "JuL",
+          "videoId": "X8yNru9psQE",
+          "vibeScore": 0.253
+        },
+        {
+          "position": 3,
+          "title": "Ça tourne dans ma tête",
+          "artist": "JuL",
+          "videoId": "D6lJb09l-3M",
+          "vibeScore": 0.281
+        },
+        {
+          "position": 4,
+          "title": "Automatique",
+          "artist": "Benab",
+          "videoId": "so6DbUQ-h0c",
+          "vibeScore": 0.284
+        },
+        {
+          "position": 5,
+          "title": "Papel",
+          "artist": "Rim'K",
+          "videoId": "n4dORYpTJWA",
+          "vibeScore": 0.306
+        },
+        {
+          "position": 6,
+          "title": "JuL - Phénoménal // Clip officiel // 2025",
+          "artist": "JuL",
+          "videoId": "wQpn095lyeM",
+          "vibeScore": 0.31
+        },
+        {
+          "position": 7,
+          "title": "Cœur Blanc",
+          "artist": "JUL",
+          "videoId": "_zC-EPlakho",
+          "vibeScore": 0.321
+        },
+        {
+          "position": 8,
+          "title": "Piano",
+          "artist": "Werenoi",
+          "videoId": "ShR_fQrqsdA",
+          "vibeScore": 0.322
+        },
+        {
+          "position": 9,
+          "title": "Qui sait ? (feat. ElGrandeToto)",
+          "artist": "Niro",
+          "videoId": "qjssI0OlaB0",
+          "vibeScore": 0.326
+        },
+        {
+          "position": 10,
+          "title": "SALE ÉTAT",
+          "artist": "RK",
+          "videoId": "ukEQApcWuhU",
+          "vibeScore": 0.332
+        },
+        {
+          "position": 11,
+          "title": "TRAFICANTE",
+          "artist": "Alonzo",
+          "videoId": "tFW9D3JDcA8",
+          "vibeScore": 0.333
+        },
+        {
+          "position": 12,
+          "title": "Bolide allemand",
+          "artist": "SDM",
+          "videoId": "WcX37NouKxw",
+          "vibeScore": 0.379
+        },
+        {
+          "position": 13,
+          "title": "Masterclass",
+          "artist": "Bouss",
+          "videoId": "16VvfPmgiuo",
+          "vibeScore": 0.402
+        },
+        {
+          "position": 14,
+          "title": "Van Dijk",
+          "artist": "La Fouine",
+          "videoId": "T6AsQd9NuoM",
+          "vibeScore": 0.405
+        },
+        {
+          "position": 15,
+          "title": "Casanova (feat. Gazo)",
+          "artist": "Soolking",
+          "videoId": "6WrVXWgn094",
+          "vibeScore": 0.538
+        }
+      ]
+    },
+    "15": {
+      "youtube": [
+        {
+          "position": 1,
+          "title": "Iris",
+          "artist": "The Goo Goo Dolls",
+          "videoId": "NdYWuo9OFAw",
+          "vibeScore": 0
+        },
+        {
+          "position": 2,
+          "title": "Goo Goo Dolls - Iris (Live From Stagecoach 2025)",
+          "artist": "The Goo Goo Dolls",
+          "videoId": "njww13JuWt0",
+          "vibeScore": 0
+        },
+        {
+          "position": 3,
+          "title": "Somewhere Only We Know Video",
+          "artist": "Keane",
+          "videoId": "Oextk-If8HQ",
+          "vibeScore": 0
+        },
+        {
+          "position": 4,
+          "title": "Wherever You Will Go (Official Video)",
+          "artist": "The Calling",
+          "videoId": "iAP9AF6DCu4",
+          "vibeScore": 0
+        },
+        {
+          "position": 5,
+          "title": "Let Her Go (Live from The Factory Theatre, Sydney)",
+          "artist": "Passenger",
+          "videoId": "RBumgq5yVrA",
+          "vibeScore": 0
+        },
+        {
+          "position": 6,
+          "title": "The Reason (Official Music Video)",
+          "artist": "Hoobastank",
+          "videoId": "fV4DiAyExN0",
+          "vibeScore": 0
+        },
+        {
+          "position": 7,
+          "title": "Wonderwall",
+          "artist": "Oasis",
+          "videoId": "6hzrDeceEKc",
+          "vibeScore": 0
+        },
+        {
+          "position": 8,
+          "title": "Here Without You (Official Music Video)",
+          "artist": "3 Doors Down",
+          "videoId": "kPBzTxZQG5Q",
+          "vibeScore": 0
+        },
+        {
+          "position": 9,
+          "title": "Shallow (from A Star Is Born) (Official Music Video)",
+          "artist": "Bradley Cooper",
+          "videoId": "bo_efYhYU2A",
+          "vibeScore": 0
+        },
+        {
+          "position": 10,
+          "title": "Every Breath You Take Video",
+          "artist": "The Police",
+          "videoId": "OMOGaugKpzs",
+          "vibeScore": 0
+        },
+        {
+          "position": 11,
+          "title": "I Don't Want to Miss a Thing (Official HD Video)",
+          "artist": "Aerosmith",
+          "videoId": "JkK8g6FMEXE",
+          "vibeScore": 0
+        },
+        {
+          "position": 12,
+          "title": "Yellow",
+          "artist": "Coldplay",
+          "videoId": "yKNxeF4KMsY",
+          "vibeScore": 0
+        },
+        {
+          "position": 13,
+          "title": "How To Save A Life (Official Video)",
+          "artist": "The Fray",
+          "videoId": "cjVQ36NhbMk",
+          "vibeScore": 0
+        },
+        {
+          "position": 14,
+          "title": "One Last Breath (Official HD Music Video)",
+          "artist": "Creed",
+          "videoId": "qnkuBUAwfe0",
+          "vibeScore": 0
+        },
+        {
+          "position": 15,
+          "title": "Boulevard of Broken Dreams - Single Version",
+          "artist": "Green Day",
+          "videoId": "Soa3gO7tL-c",
+          "vibeScore": 0
+        }
+      ],
+      "vibereco": [
+        {
+          "position": 1,
+          "title": "Iris",
+          "artist": "The Goo Goo Dolls",
+          "videoId": "NdYWuo9OFAw",
+          "vibeScore": 0.0
+        },
+        {
+          "position": 2,
+          "title": "Goo Goo Dolls - Iris (Live From Stagecoach 2025)",
+          "artist": "The Goo Goo Dolls",
+          "videoId": "njww13JuWt0",
+          "vibeScore": 0.18
+        },
+        {
+          "position": 3,
+          "title": "Wonderwall",
+          "artist": "Oasis",
+          "videoId": "6hzrDeceEKc",
+          "vibeScore": 0.361
+        },
+        {
+          "position": 4,
+          "title": "Yellow",
+          "artist": "Coldplay",
+          "videoId": "yKNxeF4KMsY",
+          "vibeScore": 0.425
+        },
+        {
+          "position": 5,
+          "title": "Here Without You (Official Music Video)",
+          "artist": "3 Doors Down",
+          "videoId": "kPBzTxZQG5Q",
+          "vibeScore": 0.473
+        },
+        {
+          "position": 6,
+          "title": "Wherever You Will Go (Official Video)",
+          "artist": "The Calling",
+          "videoId": "iAP9AF6DCu4",
+          "vibeScore": 0.48
+        },
+        {
+          "position": 7,
+          "title": "I Don't Want to Miss a Thing (Official HD Video)",
+          "artist": "Aerosmith",
+          "videoId": "JkK8g6FMEXE",
+          "vibeScore": 0.498
+        },
+        {
+          "position": 8,
+          "title": "One Last Breath (Official HD Music Video)",
+          "artist": "Creed",
+          "videoId": "qnkuBUAwfe0",
+          "vibeScore": 0.506
+        },
+        {
+          "position": 9,
+          "title": "Shallow (from A Star Is Born) (Official Music Video)",
+          "artist": "Bradley Cooper",
+          "videoId": "bo_efYhYU2A",
+          "vibeScore": 0.51
+        },
+        {
+          "position": 10,
+          "title": "The Reason (Official Music Video)",
+          "artist": "Hoobastank",
+          "videoId": "fV4DiAyExN0",
+          "vibeScore": 0.511
+        },
+        {
+          "position": 11,
+          "title": "How To Save A Life (Official Video)",
+          "artist": "The Fray",
+          "videoId": "cjVQ36NhbMk",
+          "vibeScore": 0.539
+        }
+      ]
+    }
+  },
+  "last_updated": "2025-12-10T21:47:28.311786"
+}
