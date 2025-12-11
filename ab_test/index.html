@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>VibeReco – Blind Vibe Test</title>
   <meta name="description"
     content="Test A/B pour évaluer la cohérence émotionnelle des playlists VibeReco vs YouTube Music">
@@ -29,7 +29,7 @@
   <!-- Main App -->
   <main class="container">
     <!-- Step Indicator -->
-    <div class="step-indicator">
+    <div class="step-indicator" aria-label="Étapes du test">
       <div class="step-dot active" data-step="1">1</div>
       <div class="step-connector"></div>
       <div class="step-dot" data-step="2">2</div>
@@ -38,20 +38,21 @@
     </div>
 
     <!-- Step 1: Seed Selection -->
-    <section id="step-1" class="step-container active">
+    <section id="step-1" class="step-container active" aria-label="Choix du morceau seed">
       <div class="text-center mb-8">
         <h2>Choisis un morceau seed</h2>
         <p class="mb-4">Sélectionne le morceau de départ pour lancer le test A/B</p>
       </div>
 
       <div class="seed-grid" id="seed-grid">
-        <!-- Seeds will be injected by JavaScript -->
+        <!-- Seeds injectées par JavaScript -->
       </div>
 
       <div class="btn-container">
         <button class="btn btn-primary" id="start-test-btn" disabled>
           <span>Lancer le test</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
@@ -59,7 +60,7 @@
     </section>
 
     <!-- Step 2: Playlist Comparison -->
-    <section id="step-2" class="step-container">
+    <section id="step-2" class="step-container" aria-label="Comparaison des playlists">
       <div class="text-center mb-6">
         <h2 id="comparison-title">Comparaison des playlists</h2>
         <p>Écoute et compare les deux playlists. Laquelle a la meilleure vibe ?</p>
@@ -73,7 +74,7 @@
             <button class="playlist-vote-btn" data-vote="A">Voter A</button>
           </div>
           <div class="playlist-tracks" id="playlist-a-tracks">
-            <!-- Tracks injected by JS -->
+            <!-- Tracks injectés par JS -->
           </div>
         </div>
 
@@ -84,21 +85,23 @@
             <button class="playlist-vote-btn" data-vote="B">Voter B</button>
           </div>
           <div class="playlist-tracks" id="playlist-b-tracks">
-            <!-- Tracks injected by JS -->
+            <!-- Tracks injectés par JS -->
           </div>
         </div>
       </div>
 
       <div class="btn-container">
         <button class="btn btn-secondary" id="back-to-seeds">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
           <span>Retour</span>
         </button>
         <button class="btn btn-primary" id="go-to-rating" disabled>
           <span>Continuer</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
@@ -106,7 +109,7 @@
     </section>
 
     <!-- Step 3: Rating & Submit -->
-    <section id="step-3" class="step-container">
+    <section id="step-3" class="step-container" aria-label="Évaluation de la playlist">
       <div class="text-center mb-6">
         <h2>Évalue ta playlist préférée</h2>
         <p>Tu as choisi la <strong id="chosen-playlist">Playlist A</strong>. Note-la sur ces critères.</p>
@@ -148,14 +151,16 @@
 
       <div class="btn-container">
         <button class="btn btn-secondary" id="back-to-comparison">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
           <span>Retour</span>
         </button>
         <button class="btn btn-primary" id="submit-vote">
           <span>Enregistrer le vote</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </button>
@@ -163,7 +168,7 @@
     </section>
 
     <!-- Result Screen -->
-    <section id="result-screen" class="step-container">
+    <section id="result-screen" class="step-container" aria-label="Résultat du test">
       <div class="result-screen">
         <div class="result-icon">🎉</div>
         <h2 class="result-title">Merci pour ton vote !</h2>
@@ -175,7 +180,8 @@
         <div class="btn-container">
           <button class="btn btn-primary" id="new-test-btn">
             <span>Nouveau test</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
               <path d="M1 4v6h6M23 20v-6h-6" />
               <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" />
             </svg>
@@ -186,24 +192,27 @@
   </main>
 
   <!-- Audio Player (fixed bottom) -->
-  <div class="audio-player" id="audio-player">
+  <div class="audio-player" id="audio-player" aria-label="Lecteur audio">
     <div class="audio-controls">
-      <button class="control-btn" id="audio-prev">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="control-btn" id="audio-prev" aria-label="Piste précédente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
           <path d="M19 20L9 12l10-8v16zM5 19V5h2v14H5z" />
         </svg>
       </button>
-      <button class="track-play-btn" id="audio-play-pause">
-        <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <button class="track-play-btn" id="audio-play-pause" aria-label="Lecture / Pause">
+        <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <polygon points="5 3 19 12 5 21 5 3" />
         </svg>
-        <svg id="pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+        <svg id="pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"
+          aria-hidden="true">
           <rect x="6" y="4" width="4" height="16" />
           <rect x="14" y="4" width="4" height="16" />
         </svg>
       </button>
-      <button class="control-btn" id="audio-next">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="control-btn" id="audio-next" aria-label="Piste suivante">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
           <path d="M5 4l10 8-10 8V4zM19 5v14h-2V5h2z" />
         </svg>
       </button>

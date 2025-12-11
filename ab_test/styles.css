@@ -82,8 +82,8 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
-    padding-bottom: 100px;
-    /* Space for fixed audio player */
+    /* padding-bottom adapté pour laisser la place au player + safe area iPhone */
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -92,10 +92,7 @@ body {
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background:
         radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
@@ -137,7 +134,7 @@ p {
 
 /* === Layout === */
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
 }
@@ -182,6 +179,7 @@ p {
     justify-content: center;
     gap: 16px;
     margin-bottom: 40px;
+    align-items: center;
 }
 
 .step-dot {
@@ -251,9 +249,8 @@ p {
 .seed-card::before {
     content: '';
     position: absolute;
+    inset-inline: 0;
     top: 0;
-    left: 0;
-    right: 0;
     height: 3px;
     background: var(--gradient-primary);
     opacity: 0;
@@ -282,7 +279,7 @@ p {
 
 .seed-cover {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: var(--radius-md);
     margin-bottom: 12px;
@@ -332,12 +329,7 @@ p {
     margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
-    .playlist-comparison {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* Colonne de playlist (style carte) */
 .playlist-column {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
@@ -346,6 +338,10 @@ p {
     border-radius: var(--radius-xl);
     padding: 20px;
     transition: all var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* évite les débordements horizontaux */
 }
 
 .playlist-column:hover {
@@ -382,6 +378,7 @@ p {
     font-size: 0.8rem;
     cursor: pointer;
     transition: all var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .playlist-vote-btn:hover {
@@ -395,14 +392,18 @@ p {
     color: white;
 }
 
+/* Liste de titres dans une colonne */
 .playlist-tracks {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    max-height: 500px;
+    max-height: min(480px, 55vh);
+    /* meilleure adaptation sur petits écrans */
     overflow-y: auto;
+    padding-right: 4px;
 }
 
+/* Track item */
 .track-item {
     display: flex;
     align-items: center;
@@ -411,6 +412,8 @@ p {
     background: rgba(255, 255, 255, 0.02);
     border-radius: var(--radius-md);
     transition: background var(--transition-fast);
+    min-width: 0;
+    /* important pour que le texte wrap sans déborder */
 }
 
 .track-item:hover {
@@ -445,21 +448,22 @@ p {
     min-width: 0;
 }
 
+/* Sur mobile, on laisse la possibilité d'aller à la ligne au lieu d'écraser visuellement */
 .track-title {
     font-weight: 500;
     font-size: 0.85rem;
     color: var(--text-primary);
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .track-artist {
     font-size: 0.75rem;
     color: var(--text-muted);
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .track-play-btn {
@@ -498,21 +502,10 @@ p {
     margin-bottom: 40px;
 }
 
-.rating-section h3 {
-    margin-bottom: 24px;
-    text-align: center;
-}
-
 .rating-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-}
-
-@media (max-width: 768px) {
-    .rating-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 .rating-item {
@@ -532,7 +525,6 @@ p {
 .rating-label-group {
     margin-bottom: 16px;
     text-align: left;
-    /* Align text to left for better readability of descriptions */
 }
 
 .rating-title {
@@ -546,13 +538,6 @@ p {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.4;
-}
-
-.rating-label {
-    /* Legacy class kept just in case, though replaced by rating-label-group structure */
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
 }
 
 .rating-slider {
@@ -607,7 +592,7 @@ p {
     box-shadow: var(--shadow-md);
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
@@ -634,6 +619,7 @@ p {
     justify-content: center;
     gap: 16px;
     margin-top: 32px;
+    flex-wrap: wrap;
 }
 
 /* === Result Screen === */
@@ -704,7 +690,7 @@ p {
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
     border-top: 1px solid var(--border-default);
-    padding: 16px 24px;
+    padding: 16px 24px calc(16px + env(safe-area-inset-bottom, 0px));
     display: none;
     align-items: center;
     gap: 16px;
@@ -733,7 +719,6 @@ p {
     display: flex;
     align-items: center;
     gap: 16px;
-    /* Increased gap for better spacing */
 }
 
 .control-btn {
@@ -761,6 +746,7 @@ p {
     background: var(--bg-card);
     border-radius: 2px;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .audio-progress-fill {
@@ -801,28 +787,35 @@ p {
     border-radius: 4px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
 /* === Mobile Responsiveness Improvements === */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 18px;
+    }
+}
+
 @media (max-width: 768px) {
 
-    /* Scale down global sizing to fix "zoomed in" feel */
     html {
         font-size: 14px;
     }
 
-    /* Adjust headings */
     h1 {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
 
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.45rem;
     }
 
     .container {
         padding: 0 16px;
     }
 
-    /* Improve Layout spacing */
     .app-header {
         padding: 16px 0;
         margin-bottom: 24px;
@@ -833,20 +826,44 @@ p {
         gap: 12px;
     }
 
+    /* Playlists en une seule colonne, full width, pour éviter l'effet "écrasé" sur iPhone */
+    .playlist-comparison {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .playlist-column {
+        padding: 16px;
+        border-radius: var(--radius-lg);
+    }
+
+    .playlist-tracks {
+        max-height: min(360px, 55vh);
+    }
+
+    /* Autoriser les titres à évent. passer sur 2 lignes plutôt que de tout compresser */
+    .track-title,
+    .track-artist {
+        white-space: nowrap;
+    }
+
     .rating-section {
         padding: 20px;
     }
 
-    /* Redesign Audio Player for Mobile */
+    .rating-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Audio player repensé pour mobile */
     .audio-player {
         flex-direction: column;
-        padding: 12px 16px;
-        gap: 12px;
-        /* Ensure it sits above content */
+        align-items: stretch;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+        gap: 8px;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
     }
 
-    /* Reorder player elements: Progress at top, Text center, Controls bottom */
     .audio-progress {
         width: 100%;
         order: 1;
@@ -865,33 +882,31 @@ p {
         justify-content: center;
         order: 3;
         gap: 32px;
-        /* Bigger touch targets */
     }
 
     .control-btn {
         padding: 12px;
-        /* Larger touch area */
-    }
-
-    /* Ensure body has enough padding so player doesn't cover content */
-    body {
-        /* Estimate player height: ~140px. Add safe buffer */
-        padding-bottom: 180px;
-    }
-
-    /* optimize playlist presentation */
-    .track-item {
-        padding: 6px;
-    }
-
-    .playlist-tracks {
-        max-height: 400px;
-        /* shorter scroll area on phone */
     }
 }
 
+/* Ultra small devices (anciens iPhone SE, etc.) */
+@media (max-width: 380px) {
+    .playlist-column {
+        padding: 12px;
+    }
 
+    .track-cover {
+        width: 32px;
+        height: 32px;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
+    .track-item {
+        padding: 6px;
+        gap: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
