@@ -676,7 +676,27 @@ p {
 .audio-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
+    /* Increased gap for better spacing */
+}
+
+.control-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    color: var(--primary-400);
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(1.1);
 }
 
 .audio-progress {

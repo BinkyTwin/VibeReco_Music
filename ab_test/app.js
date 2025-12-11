@@ -91,7 +91,9 @@ const elements = {
     pauseIcon: document.getElementById('pause-icon'),
     nowPlayingTitle: document.getElementById('now-playing-title'),
     nowPlayingArtist: document.getElementById('now-playing-artist'),
-    audioProgressFill: document.getElementById('audio-progress-fill')
+    audioProgressFill: document.getElementById('audio-progress-fill'),
+    audioPrev: document.getElementById('audio-prev'),
+    audioNext: document.getElementById('audio-next')
 };
 
 // ============================================
@@ -180,8 +182,12 @@ function goToStep(stepNumber) {
     // Show target step
     if (stepNumber === 'result') {
         elements.steps.result.classList.add('active');
+        stopAndHidePlayer();
     } else {
         elements.steps[stepNumber].classList.add('active');
+        if (stepNumber === 3) {
+            stopAndHidePlayer();
+        }
     }
 
     // Update step dots
@@ -288,7 +294,7 @@ function renderPlaylist(label, tracks) {
                 <div class="track-title">${track.title}</div>
                 <div class="track-artist">${track.artist}</div>
             </div>
-            <button class="track-play-btn" onclick="playTrack('${track.title}', '${track.artist}', '${track.videoId || ''}')">
+            <button class="track-play-btn" onclick="playTrack('${track.title.replace(/'/g, "\\'")}', '${track.artist.replace(/'/g, "\\'")}', '${track.videoId || ''}', '${label}')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <polygon points="5 3 19 12 5 21 5 3"/>
                 </svg>
@@ -459,7 +465,12 @@ window.onYouTubeIframeAPIReady = function () {
     console.log('YouTube IFrame API ready');
 };
 
-function playTrack(title, artist, videoId) {
+function playTrack(title, artist, videoId, playlistLabel) {
+    // Save context
+    if (playlistLabel) {
+        state.currentPlaylistLabel = playlistLabel;
+    }
+
     // Update now playing
     elements.nowPlayingTitle.textContent = title;
     elements.nowPlayingArtist.textContent = artist;
@@ -518,7 +529,7 @@ function playTrack(title, artist, videoId) {
     } else {
         // API not loaded yet, wait
         console.log('Waiting for YouTube API...');
-        setTimeout(() => playTrack(title, artist, videoId), 500);
+        setTimeout(() => playTrack(title, artist, videoId, playlistLabel), 500);
         return;
     }
 
@@ -578,6 +589,46 @@ function togglePlayPause() {
     }
 }
 
+function stopAndHidePlayer() {
+    if (ytPlayer && state.isPlaying) {
+        ytPlayer.pauseVideo();
+    }
+    state.isPlaying = false;
+    state.currentVideoId = null;
+    elements.audioPlayer.classList.remove('visible');
+    updatePlayPauseIcon();
+}
+
+function playNext() {
+    if (!state.currentPlaylistLabel || !state.playlistData) return;
+
+    const currentList = state.playlistData[state.currentPlaylistLabel];
+    if (!currentList) return;
+
+    const currentIndex = currentList.findIndex(t => t.videoId === state.currentVideoId);
+    if (currentIndex === -1) return;
+
+    const nextIndex = (currentIndex + 1) % currentList.length;
+    const nextTrack = currentList[nextIndex];
+
+    playTrack(nextTrack.title, nextTrack.artist, nextTrack.videoId, state.currentPlaylistLabel);
+}
+
+function playPrev() {
+    if (!state.currentPlaylistLabel || !state.playlistData) return;
+
+    const currentList = state.playlistData[state.currentPlaylistLabel];
+    if (!currentList) return;
+
+    const currentIndex = currentList.findIndex(t => t.videoId === state.currentVideoId);
+    if (currentIndex === -1) return;
+
+    const prevIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+    const prevTrack = currentList[prevIndex];
+
+    playTrack(prevTrack.title, prevTrack.artist, prevTrack.videoId, state.currentPlaylistLabel);
+}
+
 // ============================================
 // Utilities
 // ============================================
@@ -611,6 +662,8 @@ function setupEventListeners() {
 
     // Audio - use togglePlayPause to actually control YouTube player
     elements.audioPlayPause.addEventListener('click', togglePlayPause);
+    if (elements.audioPrev) elements.audioPrev.addEventListener('click', playPrev);
+    if (elements.audioNext) elements.audioNext.addEventListener('click', playNext);
 }
 
 // ============================================

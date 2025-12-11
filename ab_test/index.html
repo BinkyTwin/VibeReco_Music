@@ -173,15 +173,27 @@
 
   <!-- Audio Player (fixed bottom) -->
   <div class="audio-player" id="audio-player">
-    <button class="track-play-btn" id="audio-play-pause">
-      <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <polygon points="5 3 19 12 5 21 5 3" />
-      </svg>
-      <svg id="pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none">
-        <rect x="6" y="4" width="4" height="16" />
-        <rect x="14" y="4" width="4" height="16" />
-      </svg>
-    </button>
+    <div class="audio-controls">
+      <button class="control-btn" id="audio-prev">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 20L9 12l10-8v16zM5 19V5h2v14H5z" />
+        </svg>
+      </button>
+      <button class="track-play-btn" id="audio-play-pause">
+        <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3" />
+        </svg>
+        <svg id="pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+          <rect x="6" y="4" width="4" height="16" />
+          <rect x="14" y="4" width="4" height="16" />
+        </svg>
+      </button>
+      <button class="control-btn" id="audio-next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 4l10 8-10 8V4zM19 5v14h-2V5h2z" />
+        </svg>
+      </button>
+    </div>
     <div class="now-playing">
       <div class="now-playing-title" id="now-playing-title">-</div>
       <div class="now-playing-artist" id="now-playing-artist">-</div>
