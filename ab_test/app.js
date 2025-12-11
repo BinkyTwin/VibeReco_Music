@@ -141,14 +141,31 @@ async function loadPlaylistsData() {
 function renderSeedGrid() {
     const seeds = window.SEED_SONGS || [];
 
-    elements.seedGrid.innerHTML = seeds.map(seed => `
+    elements.seedGrid.innerHTML = seeds.map(seed => {
+        // Find video ID from playlists data if available
+        let videoId = null;
+        if (PLAYLISTS_DATA && PLAYLISTS_DATA.playlists && PLAYLISTS_DATA.playlists[seed.id]) {
+            const ytPlaylist = PLAYLISTS_DATA.playlists[seed.id].youtube;
+            if (ytPlaylist && ytPlaylist.length > 0) {
+                videoId = ytPlaylist[0].videoId;
+            }
+        }
+
+        const imageUrl = videoId
+            ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+            : null;
+
+        return `
         <div class="seed-card" data-seed-id="${seed.id}">
-            <div class="seed-vibe-emoji">${seed.vibeEmoji}</div>
+            ${imageUrl
+                ? `<img src="${imageUrl}" class="seed-cover" alt="${seed.title}">`
+                : `<div class="seed-vibe-emoji">${seed.vibeEmoji}</div>`
+            }
             <div class="seed-title">${seed.title}</div>
             <div class="seed-artist">${seed.artist}</div>
             <span class="seed-vibe-tag">${window.VIBE_LABELS?.[seed.vibe] || seed.vibe}</span>
         </div>
-    `).join('');
+    `}).join('');
 
     // Add click handlers
     document.querySelectorAll('.seed-card').forEach(card => {
@@ -234,9 +251,16 @@ function startTest() {
         ? { A: 'youtube', B: 'vibe' }
         : { A: 'vibe', B: 'youtube' };
 
+    // Balance playlist lengths
+    const minLength = Math.min(seedData.youtube.length, seedData.vibereco.length);
+    console.log(`Balancing playlists to length: ${minLength}`);
+
+    const balancedYoutube = seedData.youtube.slice(0, minLength);
+    const balancedVibereco = seedData.vibereco.slice(0, minLength);
+
     state.playlistData = {
-        A: flip ? seedData.youtube : seedData.vibereco,
-        B: flip ? seedData.vibereco : seedData.youtube
+        A: flip ? balancedYoutube : balancedVibereco,
+        B: flip ? balancedVibereco : balancedYoutube
     };
 
     // Render playlists
@@ -290,6 +314,9 @@ function renderPlaylist(label, tracks) {
     container.innerHTML = tracks.map(track => `
         <div class="track-item" data-video-id="${track.videoId || ''}">
             <div class="track-position">${track.position}</div>
+            ${track.videoId
+            ? `<img src="https://img.youtube.com/vi/${track.videoId}/default.jpg" class="track-cover" alt="Cover">`
+            : ''}
             <div class="track-info">
                 <div class="track-title">${track.title}</div>
                 <div class="track-artist">${track.artist}</div>
