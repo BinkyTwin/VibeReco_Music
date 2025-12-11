@@ -27,7 +27,8 @@ const state = {
     },
     testId: null,
     isPlaying: false,
-    currentAudio: null
+    currentAudio: null,
+    currentVideoId: null
 };
 
 // ============================================
@@ -99,6 +100,9 @@ const elements = {
 
 async function init() {
     console.log('VibeReco A/B Test - Initializing...');
+
+    // Load YouTube IFrame API
+    loadYouTubeAPI();
 
     // Load pre-generated playlists
     await loadPlaylistsData();
@@ -430,8 +434,30 @@ function resetTest() {
 }
 
 // ============================================
-// Audio Playback (YouTube)
+// Audio Playback (YouTube IFrame API)
 // ============================================
+
+let ytPlayer = null;
+let ytPlayerReady = false;
+
+// Load YouTube IFrame API
+function loadYouTubeAPI() {
+    if (window.YT && window.YT.Player) {
+        ytPlayerReady = true;
+        return;
+    }
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// Called by YouTube API when ready
+window.onYouTubeIframeAPIReady = function () {
+    ytPlayerReady = true;
+    console.log('YouTube IFrame API ready');
+};
 
 function playTrack(title, artist, videoId) {
     // Update now playing
@@ -439,14 +465,117 @@ function playTrack(title, artist, videoId) {
     elements.nowPlayingArtist.textContent = artist;
     elements.audioPlayer.classList.add('visible');
 
-    // For now, just show the player UI
-    // Full YouTube playback would require YouTube IFrame API
-    console.log(`Playing: ${title} by ${artist} (${videoId})`);
+    if (!videoId || videoId === '' || videoId.startsWith('demo')) {
+        console.warn('No valid videoId for this track');
+        return;
+    }
 
-    // Toggle play state
-    state.isPlaying = !state.isPlaying;
+    // If same track, toggle play/pause
+    if (state.currentVideoId === videoId && ytPlayer) {
+        if (state.isPlaying) {
+            ytPlayer.pauseVideo();
+            state.isPlaying = false;
+        } else {
+            ytPlayer.playVideo();
+            state.isPlaying = true;
+        }
+        updatePlayPauseIcon();
+        return;
+    }
+
+    state.currentVideoId = videoId;
+
+    // Create or update player
+    if (!ytPlayer && ytPlayerReady) {
+        // Create hidden player container
+        let playerDiv = document.getElementById('yt-player');
+        if (!playerDiv) {
+            playerDiv = document.createElement('div');
+            playerDiv.id = 'yt-player';
+            playerDiv.style.cssText = 'position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;';
+            document.body.appendChild(playerDiv);
+        }
+
+        ytPlayer = new YT.Player('yt-player', {
+            height: '1',
+            width: '1',
+            videoId: videoId,
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0,
+                'disablekb': 1,
+                'fs': 0,
+                'modestbranding': 1,
+                'playsinline': 1
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    } else if (ytPlayer) {
+        ytPlayer.loadVideoById(videoId);
+    } else {
+        // API not loaded yet, wait
+        console.log('Waiting for YouTube API...');
+        setTimeout(() => playTrack(title, artist, videoId), 500);
+        return;
+    }
+
+    state.isPlaying = true;
+    updatePlayPauseIcon();
+}
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+    state.isPlaying = true;
+    updatePlayPauseIcon();
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+        state.isPlaying = false;
+        updatePlayPauseIcon();
+    } else if (event.data === YT.PlayerState.PLAYING) {
+        state.isPlaying = true;
+        updatePlayPauseIcon();
+        // Update progress bar
+        updateProgress();
+    } else if (event.data === YT.PlayerState.PAUSED) {
+        state.isPlaying = false;
+        updatePlayPauseIcon();
+    }
+}
+
+function updatePlayPauseIcon() {
     elements.playIcon.style.display = state.isPlaying ? 'none' : 'block';
     elements.pauseIcon.style.display = state.isPlaying ? 'block' : 'none';
+}
+
+function updateProgress() {
+    if (!ytPlayer || !state.isPlaying) return;
+
+    const current = ytPlayer.getCurrentTime() || 0;
+    const duration = ytPlayer.getDuration() || 1;
+    const percent = (current / duration) * 100;
+
+    elements.audioProgressFill.style.width = `${percent}%`;
+
+    if (state.isPlaying) {
+        requestAnimationFrame(updateProgress);
+    }
+}
+
+function togglePlayPause() {
+    if (ytPlayer) {
+        if (state.isPlaying) {
+            ytPlayer.pauseVideo();
+        } else {
+            ytPlayer.playVideo();
+        }
+        state.isPlaying = !state.isPlaying;
+        updatePlayPauseIcon();
+    }
 }
 
 // ============================================

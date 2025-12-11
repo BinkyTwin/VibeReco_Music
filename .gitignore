@@ -20,6 +20,7 @@ archive
 
 # Autres fichiers
 *.json
+!ab_test/data/*.json
 *.ipynb
 *.faiss
 
