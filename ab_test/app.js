@@ -424,6 +424,7 @@ async function submitVote() {
         timestamp: new Date().toISOString(),
         seedId: state.selectedSeedId,
         seedTitle: state.selectedSeed?.title || '',
+        vibe: state.selectedSeed?.vibe,
         vote: state.userVote,
         winnerSource,
         scores: state.ratings,
