@@ -49,7 +49,6 @@ const elements = {
     playlistBTracks: document.getElementById('playlist-b-tracks'),
     playlistAColumn: document.getElementById('playlist-a-column'),
     playlistBColumn: document.getElementById('playlist-b-column'),
-    voteBtns: document.querySelectorAll('.playlist-vote-btn'),
     backToSeeds: document.getElementById('back-to-seeds'),
     goToRating: document.getElementById('go-to-rating'),
 
@@ -377,17 +376,15 @@ function startTest() {
 function selectVote(vote) {
     state.userVote = vote;
 
-    elements.voteBtns.forEach(btn => {
-        const isSelected = vote && btn.dataset.vote === vote;
-        btn.classList.toggle('selected', isSelected);
-        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
-    });
-
     elements.playlistAColumn.classList.toggle('selected', vote === 'A');
     elements.playlistBColumn.classList.toggle('selected', vote === 'B');
 
+    elements.playlistAColumn.setAttribute('aria-pressed', vote === 'A' ? 'true' : 'false');
+    elements.playlistBColumn.setAttribute('aria-pressed', vote === 'B' ? 'true' : 'false');
+
     elements.goToRating.disabled = !vote;
 }
+
 
 function goToRatingStep() {
     if (!state.userVote) return;
@@ -736,8 +733,20 @@ function setupEventListeners() {
     elements.startTestBtn.addEventListener('click', startTest);
 
     // Step 2
-    elements.voteBtns.forEach(btn => {
-        btn.addEventListener('click', () => selectVote(btn.dataset.vote));
+    const playlistComparison = document.querySelector('.playlist-comparison');
+
+    playlistComparison.addEventListener('click', (e) => {
+        const col = e.target.closest('.playlist-column');
+        if (!col) return;
+        selectVote(col.dataset.vote);
+    });
+
+    playlistComparison.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const col = e.target.closest('.playlist-column');
+        if (!col) return;
+        e.preventDefault();
+        selectVote(col.dataset.vote);
     });
 
     elements.backToSeeds.addEventListener('click', () => goToStep(1));

@@ -896,3 +896,39 @@ body.is-result .step-indicator {
         scroll-behavior: auto !important;
     }
 }
+
+/* Colonne cliquable façon iOS */
+.playlist-column {
+    cursor: pointer;
+}
+
+/* Check discret */
+.playlist-selected-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.65);
+
+    opacity: 0.0;
+    transform: scale(0.92);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.playlist-column.selected .playlist-selected-mark {
+    opacity: 1;
+    transform: scale(1);
+    background: rgba(59, 130, 246, 0.18);
+    border-color: rgba(59, 130, 246, 0.30);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* Focus clavier sur colonne */
+.playlist-column:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.55);
+    outline-offset: 2px;
+}

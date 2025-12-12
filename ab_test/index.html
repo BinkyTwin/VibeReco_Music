@@ -66,30 +66,36 @@
     <section id="step-2" class="step-container" aria-label="Comparaison des playlists">
       <div class="text-center mb-6">
         <h2 id="comparison-title">Comparaison des playlists</h2>
-        <p>Écoute et compare les deux playlists. Laquelle a la meilleure vibe ?</p>
+        <p>Écoute et compare les deux playlists. Laquelle a les meilleurs enchainements, "vibes", et cohérence ?</p>
       </div>
 
       <div class="playlist-comparison" aria-label="Comparaison A/B">
         <!-- Playlist A -->
-        <div class="playlist-column" id="playlist-a-column">
+        <div class="playlist-column" id="playlist-a-column" data-vote="A" role="button" tabindex="0"
+          aria-label="Sélectionner Playlist A" aria-pressed="false">
           <div class="playlist-header">
             <span class="playlist-label">Playlist A</span>
-            <button type="button" class="playlist-vote-btn" data-vote="A" aria-pressed="false">Voter A</button>
+            <span class="playlist-selected-mark" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
           </div>
-          <div class="playlist-tracks" id="playlist-a-tracks" aria-label="Titres de la playlist A">
-            <!-- Tracks injectés par JS -->
-          </div>
+          <div class="playlist-tracks" id="playlist-a-tracks" aria-label="Titres de la playlist A"></div>
         </div>
 
         <!-- Playlist B -->
-        <div class="playlist-column" id="playlist-b-column">
+        <div class="playlist-column" id="playlist-b-column" data-vote="B" role="button" tabindex="0"
+          aria-label="Sélectionner Playlist B" aria-pressed="false">
           <div class="playlist-header">
             <span class="playlist-label">Playlist B</span>
-            <button type="button" class="playlist-vote-btn" data-vote="B" aria-pressed="false">Voter B</button>
+            <span class="playlist-selected-mark" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
           </div>
-          <div class="playlist-tracks" id="playlist-b-tracks" aria-label="Titres de la playlist B">
-            <!-- Tracks injectés par JS -->
-          </div>
+          <div class="playlist-tracks" id="playlist-b-tracks" aria-label="Titres de la playlist B"></div>
         </div>
       </div>
 
