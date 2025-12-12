@@ -273,6 +273,79 @@ Potential future extensions:
 
 ***
 
+## A/B Test Platform
+
+The project includes a **blind A/B testing platform** to quantitatively evaluate VibeReco's reranking against YouTube's default recommendations.
+
+### Purpose
+
+Compare two playlists built from the same seed song:
+- **Playlist A/B (randomized)**: YouTube's original recommendation order vs VibeReco's emotional coherence reranking
+- Users don't know which is which → **unbiased evaluation**
+
+### Architecture
+
+```
+ab_test/
+├── index.html          # Main web interface
+├── styles.css          # Premium dark-mode UI
+├── app.js              # Frontend logic (player, voting, state management)
+├── seeds.js            # Seed songs configuration
+├── generate_playlists.py   # Pre-generates playlist pairs via MusicPipeline
+├── api/
+│   └── track.js        # Serverless endpoint for track streaming
+└── data/
+    └── ab_test_playlists.json  # Pre-computed playlist pairs
+```
+
+### How It Works
+
+1. **Seed Selection** (Step 1): User picks a seed song from 15 curated tracks spanning different vibes (introspection, ego, love, party, etc.)
+
+2. **Blind Comparison** (Step 2): Two playlists are displayed side-by-side, randomly assigned as A or B. User can listen to tracks from both playlists.
+
+3. **Evaluation** (Step 3): User rates their preferred playlist on 3 criteria:
+   - **Emotional coherence**: Are emotions consistent from track to track?
+   - **Narrative coherence**: Is there a progression, a thread?
+   - **Keepability**: Would you save this playlist for later?
+
+4. **Vote Submission**: Results are stored in Redis (via Upstash) for analysis.
+
+### Running the A/B Test
+
+**1. Generate playlist data:**
+
+```bash
+cd ab_test
+python generate_playlists.py
+```
+
+This runs the MusicPipeline for all 15 seeds and saves both orderings to `data/ab_test_playlists.json`.
+
+**2. Serve locally:**
+
+```bash
+# Using Python's built-in server
+python -m http.server 8000 --directory ab_test
+
+# Or use any static file server
+npx serve ab_test
+```
+
+**3. Deploy:**
+
+The platform is designed for Vercel deployment with the serverless API endpoint.
+
+### Evaluation Metrics
+
+Results can be analyzed to compute:
+- **Win rate**: % of votes where VibeReco was preferred
+- **Score gain**: Average rating improvement vs YouTube
+- **Win rate by vibe category**: Performance across different emotional contexts
+- **Score distributions**: Boxplots comparing rating patterns
+
+***
+
 # README (Français)
 
 ## Vue d’ensemble
@@ -523,6 +596,79 @@ Pistes futures :
 - Ajouter des features audio (tempo, energy, valence audio) pour un MER vraiment multimodal.
 - Entraîner/fine-tuner un modèle dédié sur des datasets annotés en émotion de paroles et comparer avec l’approche LLM.
 - Introduire un modèle utilisateur (historique, likes, skips) pour personnaliser encore plus les recommandations.
+
+***
+
+## Plateforme de Test A/B
+
+Le projet inclut une **plateforme de test A/B en aveugle** pour évaluer quantitativement le re-ranking VibeReco face aux recommandations par défaut de YouTube.
+
+### Objectif
+
+Comparer deux playlists construites à partir du même morceau seed :
+- **Playlist A/B (randomisée)** : ordre original YouTube vs re-ranking par cohérence émotionnelle VibeReco
+- L'utilisateur ne sait pas laquelle est laquelle → **évaluation non biaisée**
+
+### Architecture
+
+```
+ab_test/
+├── index.html          # Interface web principale
+├── styles.css          # UI premium dark-mode
+├── app.js              # Logique frontend (player, vote, gestion d'état)
+├── seeds.js            # Configuration des morceaux seed
+├── generate_playlists.py   # Pré-génère les paires de playlists via MusicPipeline
+├── api/
+│   └── track.js        # Endpoint serverless pour le streaming
+└── data/
+    └── ab_test_playlists.json  # Paires de playlists pré-calculées
+```
+
+### Fonctionnement
+
+1. **Choix du seed** (Étape 1) : L'utilisateur choisit un morceau parmi 15 titres couvrant différentes vibes (introspection, ego, amour, fête, etc.)
+
+2. **Comparaison à l'aveugle** (Étape 2) : Deux playlists côte à côte, assignées aléatoirement en A ou B. L'utilisateur peut écouter les morceaux des deux.
+
+3. **Évaluation** (Étape 3) : L'utilisateur note sa playlist préférée sur 3 critères :
+   - **Cohérence émotionnelle** : Les émotions sont-elles constantes d'un morceau à l'autre ?
+   - **Cohérence narrative** : Y a-t-il une progression, un fil conducteur ?
+   - **Envie de garder** : Enregistrerais-tu cette playlist pour plus tard ?
+
+4. **Soumission** : Les votes sont stockés dans Redis (via Upstash) pour analyse.
+
+### Lancer le test A/B
+
+**1. Générer les données :**
+
+```bash
+cd ab_test
+python generate_playlists.py
+```
+
+Cela exécute le MusicPipeline pour les 15 seeds et sauvegarde les deux ordres dans `data/ab_test_playlists.json`.
+
+**2. Servir en local :**
+
+```bash
+# Avec le serveur intégré Python
+python -m http.server 8000 --directory ab_test
+
+# Ou n'importe quel serveur de fichiers statiques
+npx serve ab_test
+```
+
+**3. Déployer :**
+
+La plateforme est conçue pour un déploiement Vercel avec l'API serverless.
+
+### Métriques d'évaluation
+
+Les résultats permettent de calculer :
+- **Taux de victoire** : % des votes où VibeReco a été préféré
+- **Gain de score** : Amélioration moyenne des notes vs YouTube
+- **Taux de victoire par catégorie de vibe** : Performance selon le contexte émotionnel
+- **Distribution des scores** : Boxplots comparant les patterns de notation
 
 [1](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53429284/01d6b599-74ef-474c-9f57-740541b4e237/requirements.txt)
 [2](https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53429284/12048261-1670-4100-a43f-c8fdeca1761b/pipeline.py)
