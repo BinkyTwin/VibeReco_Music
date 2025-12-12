@@ -1,17 +1,14 @@
 /**
  * VibeReco A/B Test - Main Application Logic
- * 
- * Handles:
- * - Seed selection UI
- * - Playlist display and comparison
- * - Voting and rating flow
- * - Audio preview playback
- * - API calls to save votes (Vercel KV)
+ *
+ * Improvements included:
+ * - DOM-safe rendering (no untrusted innerHTML for text)
+ * - No inline onclick handlers (event delegation + dataset)
+ * - Fixed step logic for 'result'
+ * - Better a11y state updates (aria-pressed, aria-current)
+ * - RAF progress loop managed correctly (cancel on stop)
+ * - Better YouTube thumbnails (mqdefault)
  */
-
-// ============================================
-// State Management
-// ============================================
 
 const state = {
     currentStep: 1,
@@ -20,27 +17,16 @@ const state = {
     playlistData: null,
     playlistMapping: null, // { A: "youtube" | "vibe", B: "youtube" | "vibe" }
     userVote: null, // "A" or "B"
-    ratings: {
-        emotional: 3,
-        narrative: 3,
-        keepability: 3
-    },
+    ratings: { emotional: 3, narrative: 3, keepability: 3 },
     testId: null,
+
+    // Audio / YouTube
     isPlaying: false,
-    currentAudio: null,
-    currentVideoId: null
+    currentVideoId: null,
+    currentPlaylistLabel: null
 };
 
-// ============================================
-// Pre-generated Playlists Data
-// Will be loaded from data/ab_test_playlists.json
-// ============================================
-
 let PLAYLISTS_DATA = null;
-
-// ============================================
-// DOM Elements
-// ============================================
 
 const elements = {
     // Steps
@@ -85,7 +71,6 @@ const elements = {
 
     // Audio
     audioPlayer: document.getElementById('audio-player'),
-    audioElement: document.getElementById('audio-element'),
     audioPlayPause: document.getElementById('audio-play-pause'),
     playIcon: document.getElementById('play-icon'),
     pauseIcon: document.getElementById('pause-icon'),
@@ -97,196 +82,44 @@ const elements = {
     audioNext: document.getElementById('audio-next')
 };
 
-// ============================================
-// Initialization
-// ============================================
+// ------------------------------
+// Init
+// ------------------------------
+
+document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    console.log('VibeReco A/B Test - Initializing...');
-
-    // Load YouTube IFrame API
     loadYouTubeAPI();
-
-    // Load pre-generated playlists
     await loadPlaylistsData();
-
-    // Render seed grid
     renderSeedGrid();
-
-    // Setup event listeners
     setupEventListeners();
-
-    console.log('VibeReco A/B Test - Ready!');
 }
+
+// ------------------------------
+// Data
+// ------------------------------
 
 async function loadPlaylistsData() {
     try {
         const response = await fetch('data/ab_test_playlists.json');
-        if (response.ok) {
-            PLAYLISTS_DATA = await response.json();
-            console.log('Loaded playlist data:', PLAYLISTS_DATA);
-        } else {
-            console.warn('No pre-generated playlists found. Using demo mode.');
+        if (!response.ok) {
             PLAYLISTS_DATA = null;
+            return;
         }
-    } catch (error) {
-        console.warn('Could not load playlists:', error);
+        PLAYLISTS_DATA = await response.json();
+    } catch {
         PLAYLISTS_DATA = null;
     }
 }
 
-// ============================================
-// Seed Grid Rendering
-// ============================================
-
-function renderSeedGrid() {
-    const seeds = window.SEED_SONGS || [];
-
-    elements.seedGrid.innerHTML = seeds.map(seed => {
-        // Find video ID from playlists data if available
-        let videoId = null;
-        if (PLAYLISTS_DATA && PLAYLISTS_DATA.playlists && PLAYLISTS_DATA.playlists[seed.id]) {
-            const ytPlaylist = PLAYLISTS_DATA.playlists[seed.id].youtube;
-            if (ytPlaylist && ytPlaylist.length > 0) {
-                videoId = ytPlaylist[0].videoId;
-            }
-        }
-
-        const imageUrl = videoId
-            ? `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
-            : null;
-
-        return `
-        <div class="seed-card" data-seed-id="${seed.id}">
-            ${imageUrl
-                ? `<img src="${imageUrl}" class="seed-cover" alt="${seed.title}">`
-                : `<div class="seed-vibe-emoji">${seed.vibeEmoji}</div>`
-            }
-            <div class="seed-title">${seed.title}</div>
-            <div class="seed-artist">${seed.artist}</div>
-            <span class="seed-vibe-tag">${window.VIBE_LABELS?.[seed.vibe] || seed.vibe}</span>
-        </div>
-    `}).join('');
-
-    // Add click handlers
-    document.querySelectorAll('.seed-card').forEach(card => {
-        card.addEventListener('click', () => selectSeed(card));
-    });
-}
-
-function selectSeed(cardElement) {
-    // Remove previous selection
-    document.querySelectorAll('.seed-card.selected').forEach(c => c.classList.remove('selected'));
-
-    // Select new
-    cardElement.classList.add('selected');
-
-    const seedId = parseInt(cardElement.dataset.seedId);
-    state.selectedSeedId = seedId;
-    state.selectedSeed = window.SEED_SONGS.find(s => s.id === seedId);
-
-    // Enable start button
-    elements.startTestBtn.disabled = false;
-}
-
-// ============================================
-// Step Navigation
-// ============================================
-
-function goToStep(stepNumber) {
-    // Hide all steps
-    Object.values(elements.steps).forEach(step => step.classList.remove('active'));
-
-    // Show target step
-    if (stepNumber === 'result') {
-        elements.steps.result.classList.add('active');
-        stopAndHidePlayer();
-    } else {
-        elements.steps[stepNumber].classList.add('active');
-        if (stepNumber === 3) {
-            stopAndHidePlayer();
-        }
-    }
-
-    // Update step dots
-    elements.stepDots.forEach((dot, index) => {
-        const dotStep = index + 1;
-        dot.classList.remove('active', 'completed');
-
-        if (dotStep === stepNumber) {
-            dot.classList.add('active');
-        } else if (dotStep < stepNumber) {
-            dot.classList.add('completed');
-        }
-    });
-
-    // Update connectors
-    elements.stepConnectors.forEach((conn, index) => {
-        conn.classList.toggle('completed', index + 1 < stepNumber);
-    });
-
-    state.currentStep = stepNumber;
-}
-
-// ============================================
-// Playlist Display
-// ============================================
-
-function startTest() {
-    if (!state.selectedSeedId) return;
-
-    // Generate test ID
-    state.testId = generateTestId();
-
-    // Get playlist data for this seed
-    const seedData = getPlaylistsForSeed(state.selectedSeedId);
-
-    if (!seedData) {
-        alert('Playlists non disponibles pour ce seed. Génère-les d\'abord avec generate_playlists.py');
-        return;
-    }
-
-    // Randomly assign A/B
-    const flip = Math.random() > 0.5;
-    state.playlistMapping = flip
-        ? { A: 'youtube', B: 'vibe' }
-        : { A: 'vibe', B: 'youtube' };
-
-    // Balance playlist lengths
-    const minLength = Math.min(seedData.youtube.length, seedData.vibereco.length);
-    console.log(`Balancing playlists to length: ${minLength}`);
-
-    const balancedYoutube = seedData.youtube.slice(0, minLength);
-    const balancedVibereco = seedData.vibereco.slice(0, minLength);
-
-    state.playlistData = {
-        A: flip ? balancedYoutube : balancedVibereco,
-        B: flip ? balancedVibereco : balancedYoutube
-    };
-
-    // Render playlists
-    renderPlaylist('A', state.playlistData.A);
-    renderPlaylist('B', state.playlistData.B);
-
-    // Update title
-    elements.comparisonTitle.textContent = `Test pour: ${state.selectedSeed.title}`;
-
-    // Go to step 2
-    goToStep(2);
-}
-
 function getPlaylistsForSeed(seedId) {
-    // If we have pre-generated data
-    if (PLAYLISTS_DATA && PLAYLISTS_DATA.playlists) {
+    if (PLAYLISTS_DATA?.playlists?.[String(seedId)]) {
         return PLAYLISTS_DATA.playlists[String(seedId)];
     }
-
-    // Demo mode: generate fake playlists
     return generateDemoPlaylists();
 }
 
 function generateDemoPlaylists() {
-    // Create demo playlists for testing UI
     const demoTracks = [
         { title: "Track 1", artist: "Artist A" },
         { title: "Track 2", artist: "Artist B" },
@@ -302,64 +135,269 @@ function generateDemoPlaylists() {
         videoId: `demo-${i}`
     }));
 
-    // Shuffle for vibereco
-    const vibereco = [...youtube].sort(() => Math.random() - 0.5)
+    const vibereco = [...youtube]
+        .sort(() => Math.random() - 0.5)
         .map((t, i) => ({ ...t, position: i + 1 }));
 
     return { youtube, vibereco };
 }
 
-function renderPlaylist(label, tracks) {
-    const container = label === 'A' ? elements.playlistATracks : elements.playlistBTracks;
+// ------------------------------
+// Rendering (DOM safe)
+// ------------------------------
 
-    container.innerHTML = tracks.map(track => `
-        <div class="track-item" data-video-id="${track.videoId || ''}">
-            <div class="track-position">${track.position}</div>
-            ${track.videoId
-            ? `<img src="https://img.youtube.com/vi/${track.videoId}/default.jpg" class="track-cover" alt="Cover">`
-            : ''}
-            <div class="track-info">
-                <div class="track-title">${track.title}</div>
-                <div class="track-artist">${track.artist}</div>
-            </div>
-            <button class="track-play-btn" onclick="playTrack('${track.title.replace(/'/g, "\\'")}', '${track.artist.replace(/'/g, "\\'")}', '${track.videoId || ''}', '${label}')">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-            </button>
-        </div>
-    `).join('');
+function renderSeedGrid() {
+    const seeds = window.SEED_SONGS || [];
+    elements.seedGrid.innerHTML = '';
+
+    const frag = document.createDocumentFragment();
+
+    for (const seed of seeds) {
+        const card = document.createElement('div');
+        card.className = 'seed-card';
+        card.dataset.seedId = String(seed.id);
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `Choisir ${seed.title} - ${seed.artist}`);
+
+        // Try cover from playlists if available
+        let videoId = null;
+        if (PLAYLISTS_DATA?.playlists?.[String(seed.id)]?.youtube?.[0]?.videoId) {
+            videoId = PLAYLISTS_DATA.playlists[String(seed.id)].youtube[0].videoId;
+        }
+
+        if (videoId) {
+            const img = document.createElement('img');
+            img.className = 'seed-cover';
+            img.alt = `${seed.title} - ${seed.artist}`;
+            img.loading = 'lazy';
+            img.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+            card.appendChild(img);
+        } else {
+            const ph = document.createElement('div');
+            ph.className = 'seed-placeholder';
+            // Placeholder sobre : initiale du titre plutôt qu’un emoji flashy
+            ph.textContent = (seed.title?.trim()?.[0] || '♪').toUpperCase();
+            card.appendChild(ph);
+        }
+
+        const title = document.createElement('div');
+        title.className = 'seed-title';
+        title.textContent = seed.title;
+
+        const artist = document.createElement('div');
+        artist.className = 'seed-artist';
+        artist.textContent = seed.artist;
+
+        const vibe = document.createElement('span');
+        vibe.className = 'seed-vibe-tag';
+        vibe.textContent = window.VIBE_LABELS?.[seed.vibe] || seed.vibe;
+
+        card.append(title, artist, vibe);
+        frag.appendChild(card);
+    }
+
+    elements.seedGrid.appendChild(frag);
 }
 
-// ============================================
-// Voting Logic
-// ============================================
+// Tracks rendering
+function renderPlaylist(label, tracks) {
+    const container = label === 'A' ? elements.playlistATracks : elements.playlistBTracks;
+    container.innerHTML = '';
+
+    const frag = document.createDocumentFragment();
+
+    tracks.forEach((track) => {
+        const item = document.createElement('div');
+        item.className = 'track-item';
+
+        const pos = document.createElement('div');
+        pos.className = 'track-position';
+        pos.textContent = String(track.position);
+
+        const cover = document.createElement('img');
+        cover.className = 'track-cover';
+        cover.alt = 'Cover';
+        cover.loading = 'lazy';
+
+        if (track.videoId && !track.videoId.startsWith('demo')) {
+            cover.src = `https://img.youtube.com/vi/${track.videoId}/mqdefault.jpg`;
+        } else {
+            // keep empty but valid
+            cover.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+        }
+
+        const info = document.createElement('div');
+        info.className = 'track-info';
+
+        const tTitle = document.createElement('div');
+        tTitle.className = 'track-title';
+        tTitle.textContent = track.title;
+
+        const tArtist = document.createElement('div');
+        tArtist.className = 'track-artist';
+        tArtist.textContent = track.artist;
+
+        info.append(tTitle, tArtist);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'track-play-btn';
+        btn.dataset.title = track.title;
+        btn.dataset.artist = track.artist;
+        btn.dataset.videoId = track.videoId || '';
+        btn.dataset.playlistLabel = label;
+        btn.setAttribute('aria-label', `Lire ${track.title} — ${track.artist}`);
+
+        btn.innerHTML = `
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+      </svg>
+    `;
+
+        item.append(pos, cover, info, btn);
+        frag.appendChild(item);
+    });
+
+    container.appendChild(frag);
+}
+
+// ------------------------------
+// Selection / Steps
+// ------------------------------
+
+function selectSeedById(seedId) {
+    const idNum = Number(seedId);
+    const seed = (window.SEED_SONGS || []).find(s => s.id === idNum);
+    if (!seed) return;
+
+    state.selectedSeedId = idNum;
+    state.selectedSeed = seed;
+
+    document.querySelectorAll('.seed-card.selected').forEach(c => c.classList.remove('selected'));
+    const card = elements.seedGrid.querySelector(`.seed-card[data-seed-id="${seedId}"]`);
+    if (card) card.classList.add('selected');
+
+    elements.startTestBtn.disabled = false;
+}
+
+function stepIndex(step) {
+    if (step === 'result') return 4;
+    return Number(step);
+}
+
+function goToStep(step) {
+    // Hide all
+    Object.values(elements.steps).forEach(s => s.classList.remove('active'));
+
+    // Body flag for result screen
+    const isResult = step === 'result';
+    document.body.classList.toggle('is-result', isResult);
+
+    // Show target
+    if (isResult) {
+        elements.steps.result.classList.add('active');
+        stopAndHidePlayer();
+    } else {
+        elements.steps[step].classList.add('active');
+        if (step === 3) stopAndHidePlayer();
+    }
+
+    const cur = stepIndex(step);
+
+    // Update dots + aria-current
+    elements.stepDots.forEach((dot, i) => {
+        const dotStep = i + 1;
+        dot.classList.remove('active', 'completed');
+        dot.removeAttribute('aria-current');
+
+        if (dotStep === cur) {
+            dot.classList.add('active');
+            dot.setAttribute('aria-current', 'step');
+        } else if (dotStep < cur) {
+            dot.classList.add('completed');
+        }
+    });
+
+    // Update connectors
+    elements.stepConnectors.forEach((conn, i) => {
+        conn.classList.toggle('completed', (i + 2) <= cur);
+    });
+
+    state.currentStep = step;
+
+    // Focus first heading of active step for accessibility
+    const active = document.querySelector('.step-container.active');
+    const heading = active?.querySelector('h2');
+    if (heading) heading.setAttribute('tabindex', '-1'), heading.focus({ preventScroll: false });
+}
+
+// ------------------------------
+// Test flow
+// ------------------------------
+
+function startTest() {
+    if (!state.selectedSeedId || !state.selectedSeed) return;
+
+    state.testId = generateTestId();
+
+    const seedData = getPlaylistsForSeed(state.selectedSeedId);
+    if (!seedData?.youtube?.length || !seedData?.vibereco?.length) {
+        alert("Playlists non disponibles pour ce seed.");
+        return;
+    }
+
+    // Random mapping
+    const flip = Math.random() > 0.5;
+    state.playlistMapping = flip
+        ? { A: 'youtube', B: 'vibe' }
+        : { A: 'vibe', B: 'youtube' };
+
+    // Balance lengths
+    const minLength = Math.min(seedData.youtube.length, seedData.vibereco.length);
+    const balancedYoutube = seedData.youtube.slice(0, minLength);
+    const balancedVibe = seedData.vibereco.slice(0, minLength);
+
+    state.playlistData = {
+        A: flip ? balancedYoutube : balancedVibe,
+        B: flip ? balancedVibe : balancedYoutube
+    };
+
+    renderPlaylist('A', state.playlistData.A);
+    renderPlaylist('B', state.playlistData.B);
+
+    elements.comparisonTitle.textContent = `Test pour : ${state.selectedSeed.title}`;
+
+    // Reset vote state
+    selectVote(null);
+
+    goToStep(2);
+}
 
 function selectVote(vote) {
     state.userVote = vote;
 
-    // Update UI
     elements.voteBtns.forEach(btn => {
-        btn.classList.toggle('selected', btn.dataset.vote === vote);
+        const isSelected = vote && btn.dataset.vote === vote;
+        btn.classList.toggle('selected', isSelected);
+        btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
     });
 
     elements.playlistAColumn.classList.toggle('selected', vote === 'A');
     elements.playlistBColumn.classList.toggle('selected', vote === 'B');
 
-    // Enable continue button
-    elements.goToRating.disabled = false;
+    elements.goToRating.disabled = !vote;
 }
 
 function goToRatingStep() {
     if (!state.userVote) return;
-
     elements.chosenPlaylist.textContent = `Playlist ${state.userVote}`;
     goToStep(3);
 }
 
-// ============================================
-// Rating Sliders
-// ============================================
+// ------------------------------
+// Ratings
+// ------------------------------
 
 function setupRatingSliders() {
     const sliders = [
@@ -370,34 +408,31 @@ function setupRatingSliders() {
 
     sliders.forEach(({ slider, value, key }) => {
         slider.addEventListener('input', () => {
-            state.ratings[key] = parseInt(slider.value);
+            state.ratings[key] = Number(slider.value);
             value.textContent = slider.value;
         });
     });
 }
 
-// ============================================
-// Submit Vote
-// ============================================
+// ------------------------------
+// Submit
+// ------------------------------
 
 async function submitVote() {
-    const winnerSource = state.playlistMapping[state.userVote];
-    const loserSource = state.playlistMapping[state.userVote === 'A' ? 'B' : 'A'];
+    if (!state.userVote || !state.playlistMapping) return;
 
+    const winnerSource = state.playlistMapping[state.userVote]; // 'youtube' | 'vibe'
     const voteData = {
         testId: state.testId,
         timestamp: new Date().toISOString(),
         seedId: state.selectedSeedId,
-        seedTitle: state.selectedSeed.title,
+        seedTitle: state.selectedSeed?.title || '',
         vote: state.userVote,
-        winnerSource: winnerSource,
+        winnerSource,
         scores: state.ratings,
         mapping: state.playlistMapping
     };
 
-    console.log('Submitting vote:', voteData);
-
-    // Try to save to API
     try {
         const response = await fetch('/api/track', {
             method: 'POST',
@@ -405,18 +440,13 @@ async function submitVote() {
             body: JSON.stringify(voteData)
         });
 
-        if (response.ok) {
-            console.log('Vote saved successfully!');
-        } else {
-            console.warn('Failed to save vote to API');
+        if (!response.ok) {
+            storeVoteLocally(voteData);
         }
-    } catch (error) {
-        console.warn('API not available, vote stored locally only:', error);
-        // Store locally as fallback
+    } catch {
         storeVoteLocally(voteData);
     }
 
-    // Show result
     showResult(winnerSource);
 }
 
@@ -431,18 +461,19 @@ function showResult(winnerSource) {
 
     elements.resultWinner.textContent = isVibeReco ? 'VibeReco' : 'YouTube';
     elements.resultDescription.textContent = isVibeReco
-        ? 'Ta playlist préférée était générée par VibeReco. Le reranking sémantique a amélioré la cohérence perçue !'
-        : 'Ta playlist préférée était l\'ordre original de YouTube. L\'algorithme de base reste performant sur ce type de vibe.';
+        ? "Ta playlist préférée était générée par VibeReco. Le reranking sémantique a amélioré la cohérence perçue."
+        : "Ta playlist préférée était l'ordre original de YouTube. L'algorithme de base reste performant sur ce type de vibe.";
 
     goToStep('result');
 }
 
-// ============================================
-// New Test
-// ============================================
+// ------------------------------
+// Reset
+// ------------------------------
 
 function resetTest() {
-    // Reset state
+    stopAndHidePlayer();
+
     state.selectedSeedId = null;
     state.selectedSeed = null;
     state.playlistData = null;
@@ -451,138 +482,124 @@ function resetTest() {
     state.ratings = { emotional: 3, narrative: 3, keepability: 3 };
     state.testId = null;
 
-    // Reset UI
     document.querySelectorAll('.seed-card.selected').forEach(c => c.classList.remove('selected'));
     elements.startTestBtn.disabled = true;
-    elements.goToRating.disabled = true;
-    elements.voteBtns.forEach(btn => btn.classList.remove('selected'));
-    elements.playlistAColumn.classList.remove('selected');
-    elements.playlistBColumn.classList.remove('selected');
 
-    // Reset sliders
-    [elements.ratingEmotional, elements.ratingNarrative, elements.ratingKeepability].forEach(s => s.value = 3);
+    selectVote(null);
+
+    // Reset sliders UI
+    [elements.ratingEmotional, elements.ratingNarrative, elements.ratingKeepability].forEach(s => s.value = '3');
     [elements.ratingEmotionalValue, elements.ratingNarrativeValue, elements.ratingKeepabilityValue].forEach(v => v.textContent = '3');
 
-    // Go to step 1
     goToStep(1);
 }
 
-// ============================================
-// Audio Playback (YouTube IFrame API)
-// ============================================
+// ------------------------------
+// Audio / YouTube IFrame API
+// ------------------------------
 
 let ytPlayer = null;
 let ytPlayerReady = false;
+let rafId = null;
 
-// Load YouTube IFrame API
 function loadYouTubeAPI() {
     if (window.YT && window.YT.Player) {
         ytPlayerReady = true;
         return;
     }
-
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    document.head.appendChild(tag);
 }
 
 // Called by YouTube API when ready
 window.onYouTubeIframeAPIReady = function () {
     ytPlayerReady = true;
-    console.log('YouTube IFrame API ready');
 };
 
 function playTrack(title, artist, videoId, playlistLabel) {
-    // Save context
-    if (playlistLabel) {
-        state.currentPlaylistLabel = playlistLabel;
-    }
+    state.currentPlaylistLabel = playlistLabel || state.currentPlaylistLabel;
 
-    // Update now playing
-    elements.nowPlayingTitle.textContent = title;
-    elements.nowPlayingArtist.textContent = artist;
+    elements.nowPlayingTitle.textContent = title || '-';
+    elements.nowPlayingArtist.textContent = artist || '-';
     elements.audioPlayer.classList.add('visible');
 
-    if (!videoId || videoId === '' || videoId.startsWith('demo')) {
-        console.warn('No valid videoId for this track');
+    if (!videoId || videoId.startsWith('demo')) {
+        // Pas de preview en demo
+        state.isPlaying = false;
+        updatePlayPauseIcon();
         return;
     }
 
-    // If same track, toggle play/pause
+    // Toggle if same
     if (state.currentVideoId === videoId && ytPlayer) {
-        if (state.isPlaying) {
-            ytPlayer.pauseVideo();
-            state.isPlaying = false;
-        } else {
-            ytPlayer.playVideo();
-            state.isPlaying = true;
-        }
-        updatePlayPauseIcon();
+        togglePlayPause();
         return;
     }
 
     state.currentVideoId = videoId;
 
-    // Create or update player
     if (!ytPlayer && ytPlayerReady) {
-        // Create hidden player container
-        let playerDiv = document.getElementById('yt-player');
-        if (!playerDiv) {
-            playerDiv = document.createElement('div');
-            playerDiv.id = 'yt-player';
-            playerDiv.style.cssText = 'position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;';
-            document.body.appendChild(playerDiv);
-        }
-
+        ensureHiddenPlayerDiv();
         ytPlayer = new YT.Player('yt-player', {
             height: '1',
             width: '1',
-            videoId: videoId,
+            videoId,
             playerVars: {
-                'autoplay': 1,
-                'controls': 0,
-                'disablekb': 1,
-                'fs': 0,
-                'modestbranding': 1,
-                'playsinline': 1
+                autoplay: 1,
+                controls: 0,
+                disablekb: 1,
+                fs: 0,
+                modestbranding: 1,
+                playsinline: 1
             },
             events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
+                onReady: (event) => {
+                    event.target.playVideo();
+                    state.isPlaying = true;
+                    updatePlayPauseIcon();
+                    startProgressLoop();
+                },
+                onStateChange: onPlayerStateChange
             }
         });
     } else if (ytPlayer) {
         ytPlayer.loadVideoById(videoId);
+        state.isPlaying = true;
+        updatePlayPauseIcon();
+        startProgressLoop();
     } else {
-        // API not loaded yet, wait
-        console.log('Waiting for YouTube API...');
-        setTimeout(() => playTrack(title, artist, videoId, playlistLabel), 500);
-        return;
+        // API pas encore prête → retry léger
+        setTimeout(() => playTrack(title, artist, videoId, playlistLabel), 350);
     }
-
-    state.isPlaying = true;
-    updatePlayPauseIcon();
 }
 
-function onPlayerReady(event) {
-    event.target.playVideo();
-    state.isPlaying = true;
-    updatePlayPauseIcon();
+function ensureHiddenPlayerDiv() {
+    let playerDiv = document.getElementById('yt-player');
+    if (!playerDiv) {
+        playerDiv = document.createElement('div');
+        playerDiv.id = 'yt-player';
+        playerDiv.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;';
+        document.body.appendChild(playerDiv);
+    }
 }
 
 function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.ENDED) {
+    const YTPS = window.YT?.PlayerState;
+    if (!YTPS) return;
+
+    if (event.data === YTPS.ENDED) {
         state.isPlaying = false;
         updatePlayPauseIcon();
-    } else if (event.data === YT.PlayerState.PLAYING) {
+        stopProgressLoop();
+    } else if (event.data === YTPS.PLAYING) {
         state.isPlaying = true;
         updatePlayPauseIcon();
-        // Update progress bar
-        updateProgress();
-    } else if (event.data === YT.PlayerState.PAUSED) {
+        startProgressLoop();
+    } else if (event.data === YTPS.PAUSED) {
         state.isPlaying = false;
         updatePlayPauseIcon();
+        stopProgressLoop();
     }
 }
 
@@ -591,102 +608,130 @@ function updatePlayPauseIcon() {
     elements.pauseIcon.style.display = state.isPlaying ? 'block' : 'none';
 }
 
+function startProgressLoop() {
+    stopProgressLoop();
+    rafId = requestAnimationFrame(updateProgress);
+}
+
+function stopProgressLoop() {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+}
+
 function updateProgress() {
     if (!ytPlayer || !state.isPlaying) return;
 
-    const current = ytPlayer.getCurrentTime() || 0;
-    const duration = ytPlayer.getDuration() || 1;
-    const percent = (current / duration) * 100;
+    const current = ytPlayer.getCurrentTime?.() || 0;
+    const duration = ytPlayer.getDuration?.() || 1;
+    const percent = Math.max(0, Math.min(100, (current / duration) * 100));
 
     elements.audioProgressFill.style.width = `${percent}%`;
-
-    if (state.isPlaying) {
-        requestAnimationFrame(updateProgress);
-    }
+    rafId = requestAnimationFrame(updateProgress);
 }
 
-function seekTo(event) {
+function seekTo(clientX) {
     if (!ytPlayer || !state.currentVideoId) return;
 
     const rect = elements.audioProgress.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const width = rect.width;
-    const percentage = Math.max(0, Math.min(1, x / width));
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(1, x / rect.width));
 
-    const duration = ytPlayer.getDuration() || 0;
+    const duration = ytPlayer.getDuration?.() || 0;
     const newTime = duration * percentage;
 
-    if (newTime >= 0 && duration > 0) {
+    if (duration > 0) {
         ytPlayer.seekTo(newTime, true);
-        updateProgress(); // Immediate visual update
+        elements.audioProgressFill.style.width = `${percentage * 100}%`;
     }
 }
 
 function togglePlayPause() {
-    if (ytPlayer) {
-        if (state.isPlaying) {
-            ytPlayer.pauseVideo();
-        } else {
-            ytPlayer.playVideo();
-        }
-        state.isPlaying = !state.isPlaying;
-        updatePlayPauseIcon();
+    if (!ytPlayer) return;
+
+    if (state.isPlaying) {
+        ytPlayer.pauseVideo();
+        state.isPlaying = false;
+        stopProgressLoop();
+    } else {
+        ytPlayer.playVideo();
+        state.isPlaying = true;
+        startProgressLoop();
     }
+    updatePlayPauseIcon();
 }
 
 function stopAndHidePlayer() {
-    if (ytPlayer && state.isPlaying) {
-        ytPlayer.pauseVideo();
+    stopProgressLoop();
+
+    if (ytPlayer) {
+        try { ytPlayer.pauseVideo(); } catch { }
     }
+
     state.isPlaying = false;
     state.currentVideoId = null;
+    state.currentPlaylistLabel = null;
+
     elements.audioPlayer.classList.remove('visible');
+    elements.audioProgressFill.style.width = '0%';
     updatePlayPauseIcon();
 }
 
 function playNext() {
-    if (!state.currentPlaylistLabel || !state.playlistData) return;
+    if (!state.currentPlaylistLabel || !state.playlistData || !state.currentVideoId) return;
 
     const currentList = state.playlistData[state.currentPlaylistLabel];
-    if (!currentList) return;
+    if (!Array.isArray(currentList) || currentList.length === 0) return;
 
-    const currentIndex = currentList.findIndex(t => t.videoId === state.currentVideoId);
-    if (currentIndex === -1) return;
+    const idx = currentList.findIndex(t => t.videoId === state.currentVideoId);
+    if (idx === -1) return;
 
-    const nextIndex = (currentIndex + 1) % currentList.length;
-    const nextTrack = currentList[nextIndex];
-
-    playTrack(nextTrack.title, nextTrack.artist, nextTrack.videoId, state.currentPlaylistLabel);
+    const next = currentList[(idx + 1) % currentList.length];
+    playTrack(next.title, next.artist, next.videoId, state.currentPlaylistLabel);
 }
 
 function playPrev() {
-    if (!state.currentPlaylistLabel || !state.playlistData) return;
+    if (!state.currentPlaylistLabel || !state.playlistData || !state.currentVideoId) return;
 
     const currentList = state.playlistData[state.currentPlaylistLabel];
-    if (!currentList) return;
+    if (!Array.isArray(currentList) || currentList.length === 0) return;
 
-    const currentIndex = currentList.findIndex(t => t.videoId === state.currentVideoId);
-    if (currentIndex === -1) return;
+    const idx = currentList.findIndex(t => t.videoId === state.currentVideoId);
+    if (idx === -1) return;
 
-    const prevIndex = (currentIndex - 1 + currentList.length) % currentList.length;
-    const prevTrack = currentList[prevIndex];
-
-    playTrack(prevTrack.title, prevTrack.artist, prevTrack.videoId, state.currentPlaylistLabel);
+    const prev = currentList[(idx - 1 + currentList.length) % currentList.length];
+    playTrack(prev.title, prev.artist, prev.videoId, state.currentPlaylistLabel);
 }
 
-// ============================================
+// ------------------------------
 // Utilities
-// ============================================
+// ------------------------------
 
 function generateTestId() {
-    return 'test_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    // Better uniqueness when available
+    if (window.crypto?.randomUUID) return `test_${crypto.randomUUID()}`;
+    return 'test_' + Date.now() + '_' + Math.random().toString(36).slice(2, 11);
 }
 
-// ============================================
-// Event Listeners Setup
-// ============================================
+// ------------------------------
+// Events
+// ------------------------------
 
 function setupEventListeners() {
+    // Seed selection (click + keyboard)
+    elements.seedGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.seed-card');
+        if (!card) return;
+        selectSeedById(card.dataset.seedId);
+    });
+
+    elements.seedGrid.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest('.seed-card');
+        if (!card) return;
+        e.preventDefault();
+        selectSeedById(card.dataset.seedId);
+    });
+
     // Step 1
     elements.startTestBtn.addEventListener('click', startTest);
 
@@ -694,6 +739,7 @@ function setupEventListeners() {
     elements.voteBtns.forEach(btn => {
         btn.addEventListener('click', () => selectVote(btn.dataset.vote));
     });
+
     elements.backToSeeds.addEventListener('click', () => goToStep(1));
     elements.goToRating.addEventListener('click', goToRatingStep);
 
@@ -705,18 +751,21 @@ function setupEventListeners() {
     // Result
     elements.newTestBtn.addEventListener('click', resetTest);
 
-    // Audio - use togglePlayPause to actually control YouTube player
+    // Track play buttons (event delegation, no inline onclick)
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.track-play-btn');
+        if (!btn || btn.id === 'audio-play-pause') return; // exclude main play/pause
+        playTrack(btn.dataset.title, btn.dataset.artist, btn.dataset.videoId, btn.dataset.playlistLabel);
+    });
+
+    // Audio controls
     elements.audioPlayPause.addEventListener('click', togglePlayPause);
-    elements.audioProgress.addEventListener('click', seekTo);
+
+    // Seek (pointer-friendly)
+    elements.audioProgress.addEventListener('pointerdown', (e) => {
+        seekTo(e.clientX);
+    });
+
     if (elements.audioPrev) elements.audioPrev.addEventListener('click', playPrev);
     if (elements.audioNext) elements.audioNext.addEventListener('click', playNext);
 }
-
-// ============================================
-// Start App
-// ============================================
-
-document.addEventListener('DOMContentLoaded', init);
-
-// Expose for HTML onclick handlers
-window.playTrack = playTrack;
