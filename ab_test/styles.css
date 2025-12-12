@@ -247,6 +247,70 @@ body.is-result .step-indicator {
     display: none;
 }
 
+/* Step 1 intro elements */
+.lead-text {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+.intro-block {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: 18px 22px;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.intro-block p {
+    margin: 0;
+}
+
+.intro-block ul {
+    margin: 10px 0;
+    padding-left: 22px;
+}
+
+.intro-block li {
+    margin: 6px 0;
+}
+
+.intro-block .blind-note {
+    margin-top: 12px;
+    color: var(--text-primary);
+    font-weight: 550;
+}
+
+.step-label {
+    font-size: 0.85rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.seed-instruction {
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.confidence-note {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
 /* Seed grid */
 .seed-grid {
     display: grid;
@@ -572,6 +636,29 @@ body.is-result .step-indicator {
     border-radius: var(--radius-md);
     padding: 14px;
     color: var(--text-secondary);
+}
+
+.context-note {
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.context-note p {
+    margin: 0;
+}
+
+.context-note p+p {
+    margin-top: 6px;
+}
+
+.context-note p:last-child {
+    margin-top: 10px;
+    color: var(--text-primary);
+    font-weight: 550;
 }
 
 /* Slider */
