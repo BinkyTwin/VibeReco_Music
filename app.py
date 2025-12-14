@@ -198,8 +198,11 @@ def display_live_results(tracks, distances, indices):
         st.metric("Artist - Artiste", seed_track['artist'])
         if seed_track.get('analysis'):
             emo = seed_track['analysis'].get('emotional_profile', {})
-            st.progress(emo.get('valence', 0.5), text="Positivity (Valence) - Positivité (Valence)")
-            st.progress(emo.get('arousal', 0.5), text="Energy (Arousal) - Énergie (Arousal)")
+            # Clamp values to [0, 1] to avoid progress bar errors
+            valence = max(0.0, min(1.0, float(emo.get('valence', 0.5))))
+            arousal = max(0.0, min(1.0, float(emo.get('arousal', 0.5))))
+            st.progress(valence, text="Positivity (Valence) - Positivité (Valence)")
+            st.progress(arousal, text="Energy (Arousal) - Énergie (Arousal)")
             
     with col_seed_analysis:
         if seed_track.get('analysis'):
@@ -237,10 +240,12 @@ def render_song_card(song, score, rank):
             st.caption(f"Original YouTube Rank: #{song['youtube_rank']}")
         
         # Jauge de compatibilité colorée
-        match_percentage = int(score * 100)
+        # Normalize score from [-1, 1] to [0, 1] and clamp to valid range
+        normalized_score = max(0.0, min(1.0, (float(score) + 1.0) / 2.0))
+        match_percentage = int(normalized_score * 100)
         color = "green" if match_percentage > 70 else "orange" if match_percentage > 50 else "red"
         st.markdown(f"Vibe Compatibility: - Compatibilité de Vibe : **:{color}[{match_percentage}%]**")
-        st.progress(float(score))
+        st.progress(normalized_score)
         
         if song.get("analysis"):
             with st.expander("Why this match? - Pourquoi ce match ?"):
